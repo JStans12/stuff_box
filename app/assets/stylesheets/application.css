@@ -14,3 +14,19 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar {
+  background-color: dodgerblue;
+}
+
+.navbar-brand {
+  color: ivory !important;
+  font-family: helvetica;
+  font-size: 36px;
+  letter-spacing: 2px;
+}
+
+.nav-link {
+  color: ivory !important;
+  letter-spacing: 1.5px;
+}
