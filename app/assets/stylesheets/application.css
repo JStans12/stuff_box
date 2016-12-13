@@ -15,6 +15,14 @@
  *= require_self
  */
 
+
+
+ /*
+  =============================================
+  NAVBAR
+  =============================================
+ */
+
 .navbar {
   background-color: dodgerblue;
   padding-top: 10px;
@@ -46,4 +54,19 @@
 #cube {
   height: 50px;
   width: 50px;
+}
+
+/*
+ =============================================
+ LOGIN FORMS
+ =============================================
+*/
+
+.btn-primary {
+  background-color: dodgerblue;
+  border-color: dodgerblue;
+}
+
+.panel-title {
+  color: black;
 }
