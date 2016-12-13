@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'faker'
 gem 'figaro'
 gem 'bcrypt'
+gem 'faraday'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
