@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+<<<<<<< HEAD
   gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
   gem 'pg', '~> 0.18'
   gem 'puma', '~> 3.0'
@@ -20,6 +21,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development do
