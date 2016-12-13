@@ -42,8 +42,8 @@
 # Global options
 # --------------
 #  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
+#    keys: %w(/home/NMartinez/.ssh/id_rsa),
+#    forward_agent: true,
 #    auth_methods: %w(password)
 #  }
 #
@@ -60,5 +60,5 @@
 #     # password: "please use keys"
 #   }
 
-server ‘54.67.103.54’, user: ‘ubuntu’, roles: %w{web app db}
+server "54.67.103.54", user: "ubuntu", roles: %w{web app db}
 set :ssh_options, { forward_agent: true }

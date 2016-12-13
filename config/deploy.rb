@@ -2,7 +2,7 @@
 lock "3.7.0"
 
 set :application, "stuff_box"
-set :repo_url, "git@example.com:JStans12/stuff_box.git"
+set :repo_url, "git@github.com:JStans12/stuff_box.git"
 
 # Default branch is :master
 ask :branch, 'master'
