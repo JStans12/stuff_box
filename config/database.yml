@@ -83,3 +83,4 @@ production:
   database: stuff_box_production
   username: stuff_box
   password: <%= ENV['STUFF_BOX_DATABASE_PASSWORD'] %>
+  host: localhost
