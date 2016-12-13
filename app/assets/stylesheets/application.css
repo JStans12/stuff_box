@@ -17,6 +17,8 @@
 
 .navbar {
   background-color: dodgerblue;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar-brand {
@@ -24,6 +26,7 @@
   font-family: 'Indie Flower', cursive;
   font-size: 42px;
   letter-spacing: 2px;
+  padding-right: 28px;
 }
 
 .navbar-brand:hover {
@@ -38,4 +41,9 @@
 
 .nav-link:hover {
   color: orange !important;
+}
+
+#cube {
+  height: 50px;
+  width: 50px;
 }
