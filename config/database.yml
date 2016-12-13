@@ -81,6 +81,6 @@ test:
 production:
   <<: *default
   database: stuff_box_production
-  username: postgres
-  password: triniron03
-  host: localhost
+  username: root
+  password: 
+  host: 54.67.103.54
