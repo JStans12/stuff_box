@@ -26,7 +26,16 @@
   letter-spacing: 2px;
 }
 
+.navbar-brand:hover {
+  color: orange !important;
+}
+
 .nav-link {
   color: ivory !important;
+  font-family: 'Indie Flower', cursive;
   letter-spacing: 1.5px;
+}
+
+.nav-link:hover {
+  color: orange !important;
 }
