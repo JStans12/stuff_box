@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'faker'
 gem 'figaro'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -18,6 +19,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development do

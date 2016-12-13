@@ -14,12 +14,13 @@ ActiveRecord::Schema.define(version: 20161212234213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
+    t.citext   "username"
     t.integer  "role"
     t.string   "password_digest"
-    t.string   "email"
+    t.citext   "email"
     t.string   "sms_number"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
