@@ -83,4 +83,4 @@ production:
   database: stuff_box_production
   username: stuff_box
   password: <%= ENV['STUFF_BOX_DATABASE_PASSWORD'] %>
-  host: ec2-54-67-103-54.us-west-1.compute.amazonaws.com
+  host: 54.67.103.54
