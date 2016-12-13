@@ -85,4 +85,4 @@ production:
   password: <%= ENV['STUFF_BOX_DATABASE_PASSWORD'] %>
   username: postgres
   password: triniron03
-  host: localhost
+  host: 54.67.103.54
