@@ -18,6 +18,7 @@ source 'https://rubygems.org'
   gem 'listen', '~> 3.0.5'
   gem 'bcrypt'
 
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
@@ -26,6 +27,9 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'pry'
 end
 
 group :development do
