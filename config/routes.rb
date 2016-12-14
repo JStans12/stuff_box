@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "dashboard#index"
 
   get "/login",           to: "sessions#new"
-  post "/login",          to: "sessions#register_authy"
+  post "/login",          to: "sessions#create"
   get "/verify_phone",    to: "sessions#verify_phone"
-  post "/verify_phone",   to: "sessions#create"
+  post "/verify_phone",   to: "sessions#verify_user"
 end
