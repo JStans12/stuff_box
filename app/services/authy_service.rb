@@ -18,7 +18,6 @@ class AuthyService
 
   def self.check_verification_code(user, verification_code)
   	response = new.check_verification_code_response(user, verification_code)
-  	byebug
   	JSON.parse(response.body, symbolize_names: true)[:message]
   end
 
