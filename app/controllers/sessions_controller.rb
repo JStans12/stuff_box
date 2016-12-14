@@ -9,4 +9,12 @@ class SessionsController < ApplicationController
     session[:cellphone] = params[:cellphone]
     redirect_to verify_phone_path
   end
+
+  def verify_phone
+  end
+
+  def create
+    response = Faraday.get("https://api.authy.com/protected/json/phones/verification/check?api_key=#{ENV['authy_token']}&country_code=1&phone_number=#{session[:cellphone]}&verification_code=#{params[:verification_code]}")
+    byebug
+  end
 end
