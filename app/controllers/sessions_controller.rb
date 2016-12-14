@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    user = User.find_or_create_new_user(user_params)
     if user.save
       response = AuthyService.send_verification_code(user.cellphone)
       session[:user_id] = user.id
       redirect_to verify_phone_path
     else
-      #raise some error
+      flash.now[:danger] = "There was an error with your request"
+      render :new
     end
   end
 
@@ -23,7 +24,8 @@ class SessionsController < ApplicationController
       current_user.confirmed!
       redirect_to root_path
     else
-      #raise some error
+      flash.now[:danger] = "Please enter your validation code again, or log in to request another code."
+      render :verify_phone
     end
   end
 
