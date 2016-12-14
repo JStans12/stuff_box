@@ -4,6 +4,7 @@ FactoryGirl.define do
     role 1
     password_digest "MyString"
     email "MyString"
-    sms_number "MyString"
+    cellphone "MyString"
+    status 0
   end
 end
