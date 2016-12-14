@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
     message = AuthyService.check_verification_code(current_user, params[:verification_code])
     if message == "Verification code is correct."
       current_user.confirmed!
+      flash[:success] = "Welcome to Stuff Box #{current_user.username.titleize}"
       redirect_to root_path
     else
       flash.now[:danger] = "Please enter your validation code again, or log in to request another code."
