@@ -16,6 +16,7 @@ source 'https://rubygems.org'
   gem 'therubyracer'
   gem 'execjs'
   gem 'listen', '~> 3.0.5'
+  gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
