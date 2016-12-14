@@ -1,13 +1,12 @@
 class SessionsController < ApplicationController
 
   def new
-
   end
 
   def create
     user = User.new(user_params)
     if user.save
-      AuthyService.send_verification_code(user.cellphone)
+      response = AuthyService.send_verification_code(user.cellphone)
       session[:user_id] = user.id
       redirect_to verify_phone_path
     else
