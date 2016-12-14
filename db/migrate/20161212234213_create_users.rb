@@ -3,10 +3,10 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       enable_extension "citext"
       t.citext :username
-      t.integer :role
+      t.integer :role, default: 0
       t.string :password_digest
       t.citext :email
-      t.string :sms_number
+      t.string :cellphone
 
       t.timestamps
     end

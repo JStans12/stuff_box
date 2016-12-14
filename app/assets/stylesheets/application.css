@@ -15,18 +15,58 @@
  *= require_self
  */
 
+
+
+ /*
+  =============================================
+  NAVBAR
+  =============================================
+ */
+
 .navbar {
   background-color: dodgerblue;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar-brand {
   color: ivory !important;
-  font-family: helvetica;
-  font-size: 36px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 42px;
   letter-spacing: 2px;
+  padding-right: 28px;
+}
+
+.navbar-brand:hover {
+  color: orange !important;
 }
 
 .nav-link {
   color: ivory !important;
+  font-family: 'Indie Flower', cursive;
   letter-spacing: 1.5px;
+}
+
+.nav-link:hover {
+  color: orange !important;
+}
+
+#cube {
+  height: 50px;
+  width: 50px;
+}
+
+/*
+ =============================================
+ LOGIN FORMS
+ =============================================
+*/
+
+.btn-primary {
+  background-color: dodgerblue;
+  border-color: dodgerblue;
+}
+
+.panel-title {
+  color: black;
 }
