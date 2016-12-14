@@ -3,26 +3,19 @@ require 'rails_helper'
 RSpec.describe AuthyService, type: :model do
 	context 'Class method' do
 		it 'send verification method instantiates a instance method of send verification code response' do
-			VCR.use_cassette('send_verify_class_method') do 
-				cellphone = ENV['tester_cell_phone']
-				allow(AuthyService).to receive_message_chain(:new, :send_verification_code_response).and_return(true)
+			cellphone = ENV['tester_cell_phone']
+			expect(AuthyService).to receive_message_chain(:new, :send_verification_code_response)
 
-				response = AuthyService.send_verification_code(cellphone)
-
-				expect(response).to eq(true)
-			end
+			response = AuthyService.send_verification_code(cellphone)
 		end
 
 		it 'check verification instantiates a instance method of check verification code response' do
-			VCR.use_cassette('send_verify_class_method') do 
-				user = create(:user)
-				verification_code = 'xxx'
-				allow(AuthyService).to receive_message_chain(:new, :check_verification_code_response, :body).and_return("{\"message\":\"true\"}")
+			user = create(:user)
+			verification_code = 'xxx'
+			expect(AuthyService).to receive_message_chain(:new, :check_verification_code_response, :body)
 
-				response = AuthyService.check_verification_code(user, verification_code)
+			response = AuthyService.check_verification_code(user, verification_code)
 
-				expect(response).to eq("true")
-			end
 		end
 	end
 
@@ -46,8 +39,9 @@ RSpec.describe AuthyService, type: :model do
 				verification_code = ENV['verification_code']
 
 				response = AuthyService.new.check_verification_code_response(user, verification_code)
+				response_parsed = JSON.parse(response.body, symbolize_names: true)[:message]
 
-				expect(response).to eq("Verification code is correct.")
+				expect(response_parsed).to eq("Verification code is correct.")
 			end
 		end
 	end
