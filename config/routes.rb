@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   get "/update_password_verify_phone",    to: "users#verify_phone"
   post "/update_password_verify_phone",   to: "users#verify_user"
 
+  get "/dashboard/:folder", to: "folders#index", as: "current_folder"
+  get "/up", to: "folders#up"
+  get "/root_folder", to: "folders#root"
 
 end
