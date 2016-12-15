@@ -3,14 +3,26 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def login
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      response = AuthyService.send_verification_code(user.cellphone)
+      session[:user_id] = user.id
+      redirect_to verify_phone_path
+    else
+      flash.now[:danger] = "Unable to login"
+      render :new
+    end
+  end
+
   def create
-    user = User.find_or_create_new_user(user_params)
+    user = User.new(user_params)
     if user.save
       response = AuthyService.send_verification_code(user.cellphone)
       session[:user_id] = user.id
       redirect_to verify_phone_path
     else
-      flash.now[:danger] = "There was an error with your request"
+      flash.now[:danger] = "Unable to create account"
       render :new
     end
   end
