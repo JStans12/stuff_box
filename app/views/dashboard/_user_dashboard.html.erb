@@ -1,6 +1,14 @@
 <div class= "col-md-3">
   <h4>Folders</h4>
+
   <h5><%= current_folder.name %></h5>
+
+  <% current_folder.path_to_folder.each do |folder| %>
+    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
+  <% end %>
+  <br>
+  <br>
+
   <% current_folder.children.each do |folder| %>
     <%= link_to folder.name, current_folder_path(folder.id) %>
   <% end %>
