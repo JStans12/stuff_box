@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def update_password
     user = User.find_by(username: params[:username])
-    if user.authenticate(params[:current_password])
+    if user && user.authenticate(params[:current_password])
       response = AuthyService.send_verification_code(user.cellphone)
       session[:user_id] = user.id
       session[:new_password] = params[:new_password]
