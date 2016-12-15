@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       continue_to_phone_verification(user)
     else
+      # TODO should be able to call user.errors here and render specific errors
       flash.now[:danger] = "Unable to login"
       render :new
     end
@@ -18,6 +19,7 @@ class SessionsController < ApplicationController
     if user.save
       continue_to_phone_verification(user)
     else
+      # TODO should be able to call user.errors here and render specific errors
       flash.now[:danger] = "Unable to create account"
       render :new
     end
