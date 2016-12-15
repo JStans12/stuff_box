@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "/logout",					to: "sessions#destroy"
   get "/verify_phone",    to: "sessions#verify_phone"
   post "/verify_phone",   to: "sessions#verify_user"
+  get "/update_password",  to: "users#update_password"
 end
