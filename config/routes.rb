@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
+  get "/new_folder", to: "folders#new"
+  post "/create_folder", to: "folders#create"
 
 end

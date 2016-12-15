@@ -13,4 +13,12 @@ class FoldersController < ApplicationController
     session[:current_folder_id] = current_user.root
     redirect_to root_path
   end
+
+  def new
+  end
+
+  def create
+    current_user.new_folder(params[:name], current_folder)
+    redirect_to root_path
+  end
 end
