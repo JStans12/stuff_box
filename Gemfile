@@ -17,6 +17,8 @@ source 'https://rubygems.org'
   gem 'execjs'
   gem 'listen', '~> 3.0.5'
   gem 'bcrypt'
+  gem 'faraday'
+  gem 'figaro'
 
 
 group :development, :test do
