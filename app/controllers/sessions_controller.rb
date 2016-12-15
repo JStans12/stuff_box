@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user.save
       response = AuthyService.send_verification_code(user.cellphone)
       session[:user_id] = user.id
+      session[:current_folder_id] = user.root
       redirect_to verify_phone_path
     else
       flash.now[:danger] = "There was an error with your request"
