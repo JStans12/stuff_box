@@ -14,15 +14,6 @@ class User < ApplicationRecord
   has_many :user_folders
   has_many :folders, through: :user_folders, dependent: :destroy
 
-  def self.find_or_create_new_user(userparams)
-  	user = find_by(username: userparams[:username])
-  	if user && user.authenticate(userparams[:password])
-  		user
-  	else
-  		user = User.new(userparams)
-  	end
-  end
-
   def root_folder
     Folder.find(root)
   end
