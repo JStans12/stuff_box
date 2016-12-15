@@ -19,6 +19,7 @@ source 'https://rubygems.org'
   gem 'bcrypt'
   gem 'faraday'
   gem 'figaro'
+  gem 'turbolinks', '~> 5.0.0'
 
 
 group :development, :test do
