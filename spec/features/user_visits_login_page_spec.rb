@@ -11,3 +11,6 @@ RSpec.feature "User visits login page" do
       within(".form-horizontal") do
         click_on "Login"
       end
+    end
+  end
+end
