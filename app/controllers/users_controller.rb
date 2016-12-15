@@ -11,7 +11,8 @@ class UsersController < ApplicationController
       session[:new_password] = params[:new_password]
       redirect_to update_password_verify_phone_path
     else
-      # error
+      flash.now[:danger] = "Incorrect username password confirmation"
+      render :update
     end
   end
 
