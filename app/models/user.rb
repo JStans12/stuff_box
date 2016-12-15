@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :cellphone, presence: true
   validates :role, presence: true
 
-  enum role: [:admin, :user]
+  enum role: [:user, :admin]
   enum status: [:pending, :confirmed]
 
   has_many :user_folders
@@ -28,14 +28,14 @@ class User < ApplicationRecord
   end
 
   def create_root_folder
-    root = folders.create(name: "root")
+    root = Folder.create(name: "root")
     user_folders.create(folder_id: root.id, permissions: 0)
     update(root: root.id)
     save
   end
 
   def new_folder(name, parent = root_folder)
-    folder = folders.create(name: name, parent_id: parent.id)
+    folder = Folder.create(name: name, parent_id: parent.id)
     user_folders.create(folder_id: folder.id, permissions: 0)
   end
 end
