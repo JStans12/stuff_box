@@ -1,0 +1,7 @@
+.item {
+    text-align: center;
+    padding: 15px;
+    img {
+        margin: 0 auto;
+    }
+}
