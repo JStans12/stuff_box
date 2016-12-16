@@ -8,4 +8,14 @@ class Folder < ApplicationRecord
   def owner
     users.where(user_folders: { permissions: 0 }).first
   end
+
+  def path_to_folder
+    path = []
+    folder = self
+    until folder == nil
+      path << folder
+      folder = folder.parent
+    end
+    path.reverse
+  end
 end

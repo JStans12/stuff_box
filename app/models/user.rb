@@ -28,5 +28,6 @@ class User < ApplicationRecord
   def new_folder(name, parent = root_folder)
     folder = Folder.create(name: name, parent_id: parent.id)
     user_folders.create(folder_id: folder.id, permissions: 0)
+    folder
   end
 end
