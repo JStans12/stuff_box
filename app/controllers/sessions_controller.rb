@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
   def login
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
-      continue_to_phone_verification(user)
+      session[:user_id] = user.id
+      session[:current_folder_id] = user.root
+      redirect_to root_path
     else
       # TODO should be able to call user.errors here and render specific errors
       flash.now[:danger] = "Unable to login"
