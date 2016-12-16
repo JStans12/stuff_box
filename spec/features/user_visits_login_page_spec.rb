@@ -7,7 +7,7 @@ RSpec.feature "User visits login page" do
 
       visit '/login'
       within('#login') do
-        fill_in "Username", with: user.email
+        fill_in "Username", with: user.username
         fill_in "Password", with: user.password
         click_button "Log In"
       end
@@ -22,7 +22,7 @@ RSpec.feature "User visits login page" do
 
       visit '/login'
       within('#login') do
-        fill_in "Username", with: user.email
+        fill_in "Username", with: user.username
         fill_in "Password", with: user.password
         click_button "Log In"
       end
