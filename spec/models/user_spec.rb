@@ -8,4 +8,7 @@ RSpec.describe User, type: :model do
   it { should have_secure_password}
   it { should validate_uniqueness_of(:username).ignoring_case_sensitivity}
   it { should validate_uniqueness_of(:email).ignoring_case_sensitivity}
+  it { should respond_to(:folders)}
+  it { should respond_to(:user_folders)}
+  it { should respond_to(:root)}
 end
