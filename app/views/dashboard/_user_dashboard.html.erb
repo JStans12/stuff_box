@@ -11,7 +11,7 @@
         </div>
         <div class='col-md-12'>
           <div class="float-left">/<%= current_folder.name %></div>
-          <div class='float-right'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %><a href='/up' %></div>
+          <div class='float-right'><a href='/up'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %></div>
         </div>
         <div class='col-md-12'>
           <% current_folder.children.each do |folder| %>
@@ -45,18 +45,36 @@
       </div>
 
       <div class="panel-body new-user">
-        <%= form_tag "/verify_phone" do  %>
-          <div class="form-group">
-            <%= label_tag :verification_code, "Verification Code", class: "control-label col-md-4 required-field" %>
-            <%= text_field_tag :verification_code, "", class: "input-md textinput textInput form-control" %>
-          </div>
-          <div class="form-group">
-            <%= submit_tag "Verify", class: "btn btn-primary"%>
-          </div>
-        <% end %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Document Name</th>
+              <th>Kind</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>File Name</td>
+              <td>File Type</td>
+              <td>File Created At</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>
 
 
 <div class= "col-md-3">
