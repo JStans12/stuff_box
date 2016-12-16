@@ -1,16 +1,77 @@
+  <div class="mainbox col-md-3 col-md-offset-1">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <div class="panel-title">Personal Folders</div>
+      </div>
+
+      <div class="panel-body new-user">
+        <div class='col-md-12'>
+          <div class="float-left"><%= link_to "Home", root_folder_path, class: 'home-link' %></div>
+          <div class='float-right'><%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %><a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a></div>
+        </div>
+        <div class='col-md-12'>
+          <div class="float-left">/<%= current_folder.name %></div>
+          <div class='float-right'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %><a href='/up' %></div>
+        </div>
+        <div class='col-md-12'>
+          <% current_folder.children.each do |folder| %>
+            <ul>
+              <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
+            </ul>
+          <% end %>
+        </div>
+
+      
+      </div>
+    </div>
+     <br>
+    <%= link_to "Parent Folder", up_path %>
+    <br>
+    <%= link_to "Root", root_folder_path %>
+    <br>
+    <%= link_to "New Folder", new_folder_path %>
+  </div>
+
+
+  <div class="mainbox col-md-7">
+    <div class="panel panel-info">
+
+      <div class="panel-heading">
+        <div class="panel-title">
+          <% current_folder.path_to_folder.each do |folder| %>
+            <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel-body new-user">
+        <%= form_tag "/verify_phone" do  %>
+          <div class="form-group">
+            <%= label_tag :verification_code, "Verification Code", class: "control-label col-md-4 required-field" %>
+            <%= text_field_tag :verification_code, "", class: "input-md textinput textInput form-control" %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "Verify", class: "btn btn-primary"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
 <div class= "col-md-3">
   <h4>Folders</h4>
 
   <h5><%= current_folder.name %></h5>
 
-  <% current_folder.path_to_folder.each do |folder| %>
-    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
-  <% end %>
+  
   <br>
   <br>
 
   <% current_folder.children.each do |folder| %>
-    <%= link_to folder.name, current_folder_path(folder.id) %>
+    <ul>
+      <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
+    </ul>
   <% end %>
   <br>
   <%= link_to "Parent Folder", up_path %>
