@@ -20,7 +20,7 @@ source 'https://rubygems.org'
   gem 'faraday'
   gem 'figaro'
   gem 'turbolinks', '~> 5.0.0'
-  gem 'aws-sdk'
+  gem 'aws-sdk-rails'
 
 
 group :development, :test do
