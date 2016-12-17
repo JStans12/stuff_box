@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def login
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
+      return continue_to_phone_verification(user) unless user.confirmed?
       session[:user_id] = user.id
       session[:current_folder_id] = user.root
       redirect_to root_path
