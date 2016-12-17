@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+  gem 'rb-readline'
   gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
   gem 'pg', '~> 0.18'
   gem 'puma', '~> 3.0'
@@ -20,7 +21,7 @@ source 'https://rubygems.org'
   gem 'faraday'
   gem 'figaro'
   gem 'turbolinks', '~> 5.0.0'
-  gem 'aws-sdk-rails'
+  gem 'aws-sdk', '< 2'
 
 
 group :development, :test do

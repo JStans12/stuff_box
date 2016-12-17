@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'files/new'
+  get 'uploads/new'
 
-  get 'files/create'
+  get 'uploads/create'
 
-  get 'files/index'
+  get 'uploads/index'
 
   root "dashboard#index"
 
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
 
-  resources :files
+  resources :uploads
 end

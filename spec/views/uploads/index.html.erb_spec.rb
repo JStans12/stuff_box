@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe "files/create.html.erb", type: :view do
+RSpec.describe "uploads/index.html.erb", type: :view do
   pending "add some examples to (or delete) #{__FILE__}"
 end

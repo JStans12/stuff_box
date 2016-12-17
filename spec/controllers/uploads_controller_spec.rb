@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FilesController, type: :controller do
+RSpec.describe UploadsController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do

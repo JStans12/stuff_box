@@ -5,6 +5,8 @@ class Folder < ApplicationRecord
   has_many :user_folders, dependent: :destroy
   has_many :users, through: :user_folders
 
+  has_many :files
+  
   def owner
     users.where(user_folders: { permissions: 0 }).first
   end
