@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
+
+  resources :uploads
 end
