@@ -1,35 +1,57 @@
   <div class="mainbox col-md-3 col-md-offset-1">
+
     <div class="panel panel-info">
       <div class="panel-heading">
           <div class="panel-title">Personal Folders</div>
       </div>
 
-      <div class="panel-body new-user">
-        <div class='col-md-12'>
-          <div class="float-left"><%= link_to "Home", root_folder_path, class: 'home-link' %></div>
-          <div class='float-right'><%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %><a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a></div>
+      <div class="panel-body">
+        <div class='personal-folders-panel'>
+          <div class='col-md-12'>
+            <div class="float-left"><%= link_to "Home", root_folder_path, class: 'home-link' %></div>
+            <div class='float-right'><%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %><a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a></div>
+          </div>
+          <div class='col-md-12'>
+            <div class="float-left">/<%= current_folder.name %></div>
+            <div class='float-right'><a href='/up'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %></div>
+          </div>
+          <div class='col-md-12'>
+            <% current_folder.children.each do |folder| %>
+              <ul>
+                <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
+              </ul>
+            <% end %>
+          </div>
         </div>
-        <div class='col-md-12'>
-          <div class="float-left">/<%= current_folder.name %></div>
-          <div class='float-right'><a href='/up'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %></div>
-        </div>
-        <div class='col-md-12'>
-          <% current_folder.children.each do |folder| %>
-            <ul>
-              <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
-            </ul>
-          <% end %>
-        </div>
-
-      
       </div>
     </div>
-     <br>
-    <%= link_to "Parent Folder", up_path %>
-    <br>
-    <%= link_to "Root", root_folder_path %>
-    <br>
-    <%= link_to "New Folder", new_folder_path %>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <div class="panel-title">Shared Folders</div>
+      </div>
+
+      <div class="panel-body">
+        <div class='shared-folders-panel'>
+          <div class='col-md-12'>
+            <div class="float-left"><%= link_to "Home", root_folder_path, class: 'home-link' %></div>
+            <div class='float-right'><%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %><a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a></div>
+          </div>
+          <div class='col-md-12'>
+            <div class="float-left">/<%= current_folder.name %></div>
+            <div class='float-right'><a href='/up'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %></div>
+          </div>
+          <div class='col-md-12'>
+            <% current_folder.children.each do |folder| %>
+              <ul>
+                <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -45,56 +67,36 @@
       </div>
 
       <div class="panel-body new-user">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Document Name</th>
-              <th>Kind</th>
-              <th>Created At</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>File Name</td>
-              <td>File Type</td>
-              <td>File Created At</td>
-            </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class='documents-panel'>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Document Name</th>
+                <th>Kind</th>
+                <th>Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>File Name</td>
+                <td>File Type</td>
+                <td>File Created At</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div class= "col-md-3">
-  <h4>Folders</h4>
-
-  <h5><%= current_folder.name %></h5>
-
-  
-  <br>
-  <br>
-
-  <% current_folder.children.each do |folder| %>
-    <ul>
-      <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
-    </ul>
-  <% end %>
-  <br>
-  <%= link_to "Parent Folder", up_path %>
-  <br>
-  <%= link_to "Root", root_folder_path %>
-  <br>
-  <%= link_to "New Folder", new_folder_path %>
-</div>

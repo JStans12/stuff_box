@@ -202,4 +202,16 @@ body {
 	float: right;
 }
 
+.personal-folders-panel {
+	min-height: 300px;
+}
+
+.documents-panel {
+	min-height: 680px;
+}
+
+.shared-folders-panel {
+	min-height: 300px;
+}
+
 
