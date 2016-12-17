@@ -18,4 +18,9 @@
   <%= link_to "Root", root_folder_path %>
   <br>
   <%= link_to "New Folder", new_folder_path %>
+
+  <h1>Shared with me</h1>
+  <% current_user.shared_with_me.each do |folder| %>
+    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
+  <% end %>
 </div>
