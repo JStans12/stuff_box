@@ -183,11 +183,26 @@ body {
 	border: 2px solid #bce8f1;
 	border-radius: 10px;
 	background-color: #d9edf7;
+	padding-left: 10px;
+	padding-right: 10px;
+	min-height: 30px;
 }
 
 .new-folder-link {
 	padding-right: 3px;
-	font-size: 20px;
+	font-size: 15px;
+}
+
+.upload-file-link.btn {
+	font-size: 15px;
+}
+
+.upload-file-upload.btn {
+	font-size: 15px;
+}
+
+.upload-file-link.new-folder-box {
+	margin-right: 10px;
 }
 
 .folder-view-nav {
@@ -207,12 +222,8 @@ body {
 
 .glyphicon-folder-open {
 	padding-right: 3px;
+	font-size: 10px;
 }
-
-.create-new-folder.glyphicon-folder-open {
-	font-size: 20px;
-}
-
 .glyphicon-level-up {
 	padding-right: 3px;
 	font-size: 15px;
@@ -220,11 +231,35 @@ body {
 
 .glyphicon-menu-down {
 	padding-right: 3px;
+	font-size: 10px;
 }
 
 .glyphicon-folder-close {
 	padding-right: 3px;
+	font-size: 10px;
 }
+
+.btn-default {
+	color: #337ab7;
+}
+
+.btn {
+	min-height: 30px;
+	padding-left: 10px;	
+	padding-right: 10px;	
+	padding-bottom: 1px;	
+	padding-top: 1px;	
+}
+
+.files-nav {
+	border-bottom: 1px solid #bce8f1;
+	min-height: 45px;
+}
+
+.create-new-folder.glyphicon-folder-open {
+	font-size: 15px;
+}
+
 
 .float-left {
 	float: left;
@@ -254,6 +289,7 @@ ul.personal-folders-list {
 .shared-folders-panel {
 	min-height: 305px;
 }
+
 
 
 				/* TABLE WITHIN DASHBOARD

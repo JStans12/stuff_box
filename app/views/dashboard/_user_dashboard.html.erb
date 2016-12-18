@@ -65,26 +65,6 @@
           </div>
         </div>
       </div>
-
-      <div class="panel-body">
-        <div class='shared-folders-panel'>
-          <div class='col-md-12'>
-            <div class="float-left"><%= link_to "Home", root_folder_path, class: 'home-link' %></div>
-            <div class='float-right'><%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %><a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a></div>
-          </div>
-          <div class='col-md-12'>
-            <div class="float-left">/<%= current_folder.name %></div>
-            <div class='float-right'><a href='/up'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %></div>
-          </div>
-          <div class='col-md-12'>
-            <% current_folder.children.each do |folder| %>
-              <ul>
-                <li><%= link_to folder.name, current_folder_path(folder.id) %></li>
-              </ul>
-            <% end %>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
@@ -103,6 +83,23 @@
 
       <div class="panel-body new-user">
         <div class='documents-panel'>
+
+              <div class='col-lg-12'>
+                <div class='files-nav'>
+                <div class='float-left'>
+                  <div class='new-folder-box btn btn-default'>
+                    <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
+                    <a href='/folders/new' %><span class="create-new-folder glyphicon glyphicon-folder-open"></span></a>
+                  </div>
+                </div>
+
+                <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
+                  <%= file_field_tag :file, class: 'upload-file-upload btn btn-default float-right new-folder-box' %>
+                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-default float-right new-folder-box' %> 
+                <% end %>
+                </div>
+              </div>
+
           <table class="table table-striped">
             <col width="40%">
             <col width="10%">
@@ -114,10 +111,7 @@
                 <th>Kind</th>
                 <th>Created At</th>
                 <th>
-                  <div class='new-folder-box'>
-                    <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
-                    <a href='/folders/new' %><span class="create-new-folder glyphicon glyphicon-folder-open"></span></a>
-                  </div>
+                 
                 </th>
               </tr>
             </thead>
@@ -152,34 +146,4 @@
       </div>
     </div>
   </div>
-
-
-<div class= "col-md-3">
-  <h4>Folders</h4>
-
-  <h5><%= current_folder.name %></h5>
-
-  <% current_folder.path_to_folder.each do |folder| %>
-    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
-  <% end %>
-  <br>
-  <br>
-
-  <% current_folder.children.each do |folder| %>
-    <%= link_to folder.name, current_folder_path(folder.id) %>
-  <% end %>
-  <br>
-  <%= link_to "Parent Folder", up_path %>
-  <br>
-  <%= link_to "Root", root_folder_path %>
-  <br>
-  <%= link_to "New Folder", new_folder_path %>
-
-  <h1>Upload a file</h1>
-
-  <%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
-  	<%= file_field_tag :file  %>
-  	<%= submit_tag 'Upload file' %>
-  <% end %>
-</div>
 
