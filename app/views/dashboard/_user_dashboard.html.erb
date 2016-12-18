@@ -12,7 +12,7 @@
           <div class='col-md-12 folder-view-nav'>
             <div class='float-right'>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %> 
+                <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
                 <%= link_to "Parent Folder", up_path %>
             </div>
@@ -42,27 +42,15 @@
 
       <div class="panel-body">
         <div class='personal-folders-panel'>
-          <div class='col-md-12 folder-view-nav'>
-            <div class='float-right'>
-              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "All Shared", root_folder_path, class: 'root-folder-link' %> 
-              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "Parent Folder", up_path %>
-            </div>
-            <div class="float-left"><span class="glyphicon glyphicon-menu-down"></span>Current Folder</div>
-          </div>
 
-          <div class='col-md-12'>
-            <div class="float-left"><span class="current-folder glyphicon glyphicon-folder-open"></span> - /<%= current_folder.name %><span class="glyphicon glyphicon-triangle-bottom"></span></div>
-          </div>
-          <div class='col-md-12'>
-              <ul class='personal-folders-list'>
-            <% current_folder.children.each do |folder| %>
-                <li><span class="glyphicon glyphicon-folder-close"></span>
-                 - /<%= link_to folder.name, current_folder_path(folder.id) %><span class="glyphicon glyphicon-triangle-right"></span></li>
-            <% end %>
-              </ul>
-          </div>
+            <div class='col-md-12'>
+                <ul class='personal-folders-list'>
+              <% @shared_folders.each do |folder| %>
+                  <%= link_to folder.name, current_folder_path(folder.id) %></li>
+              <% end %>
+                </ul>
+            </div>
+
         </div>
       </div>
     </div>
@@ -95,7 +83,7 @@
 
                 <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
                   <%= file_field_tag :file, class: 'upload-file-button btn btn-primary float-right' %>
-                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %> 
+                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %>
                 <% end %>
                 </div>
               </div>
@@ -130,8 +118,8 @@
                   </tr>
                 <% end %>
                 <% current_folder.uploads.each do |upload| %>
-                  <% extn = File.extname  upload.name   %>     
-                  <% name = File.basename upload.name, extn %>  
+                  <% extn = File.extname  upload.name   %>
+                  <% name = File.basename upload.name, extn %>
                     <tr>
                       <td>
                         <%= link_to name, upload.url -%>
@@ -145,11 +133,10 @@
                       <td></td>
                     </tr>
                 <% end %>
-   
+
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-

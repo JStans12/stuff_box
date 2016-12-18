@@ -1,6 +1,7 @@
 class Folder < ApplicationRecord
   has_many :children, class_name: "Folder", foreign_key: "parent_id"
   belongs_to :parent, class_name: "Folder", foreign_key: "parent_id", required: false
+  belongs_to :owner, class_name: "User", foreign_key: "owner_id", required: false
 
   enum visibility: [:private_folder, :public_folder]
 
@@ -9,8 +10,12 @@ class Folder < ApplicationRecord
 
   has_many :uploads
 
-  def owner
-    users.where(user_folders: { permissions: 0 }).first
+  def self.owners
+    # list of all onwers
+  end
+
+  def self.by_owner
+    # hash of owner pointing to folders
   end
 
   def path_to_folder
