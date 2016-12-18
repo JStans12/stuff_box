@@ -171,3 +171,158 @@ body {
     margin-top: 120px;
   }
 }
+
+/* DASHBOARD LANDING PAGE
+-------------------------------------------------- */
+.center-vertical {
+	vertical-align: center;
+}
+
+.new-folder-box {
+	margin-bottom: 10px;
+	text-align: center;
+	vertical-align: center;
+	border: 2px solid #bce8f1;
+	border-radius: 10px;
+	background-color: #d9edf7;
+	padding-left: 10px;
+	padding-right: 10px;
+	min-height: 30px;
+}
+
+.new-folder-link {
+	padding-right: 3px;
+	font-size: 15px;
+	color: white;
+}
+
+.new-folder-link a:hover {
+	color: white;
+}
+
+.upload-file-link.btn {
+	font-size: 15px;
+}
+
+.upload-file-button.btn {
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.upload-file-link.new-folder-box {
+	margin-right: 10px;
+}
+
+.folder-view-nav {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #bce8f1;
+}
+
+.glyphicon-triangle-right {
+	padding-left: 3px;
+	font-size: 10px;
+}
+
+.glyphicon-triangle-bottom {
+	padding-left: 3px;
+	font-size: 10px;
+}
+
+.glyphicon-folder-open {
+	padding-right: 3px;
+	font-size: 10px;
+}
+.glyphicon-level-up {
+	padding-right: 3px;
+	font-size: 15px;
+}
+
+.glyphicon-menu-down {
+	padding-right: 3px;
+	font-size: 10px;
+}
+
+.glyphicon-folder-close {
+	padding-right: 3px;
+	font-size: 10px;
+}
+
+
+.files-nav.btn important! {
+	min-height: 30px;
+	padding-left: 10px;	
+	padding-right: 10px;	
+	padding-bottom: 1px;	
+	padding-top: 1px;	
+	border-radius: 10px;
+}
+
+.files-nav {
+	border-bottom: 1px solid #bce8f1;
+	min-height: 45px;
+}
+
+.create-new-folder.glyphicon-folder-open {
+	font-size: 15px;
+	color: white;
+}
+
+
+.float-left {
+	float: left;
+}
+
+
+.root-folder-link {
+	padding-right: 3px;
+}
+
+ul.personal-folders-list {
+	list-style-type: none;
+}
+
+.float-right {
+	float: right;
+}
+
+.personal-folders-panel {
+	min-height: 300px;
+}
+
+.documents-panel {
+	min-height: 680px;
+}
+
+.shared-folders-panel {
+	min-height: 305px;
+}
+
+
+
+				/* TABLE WITHIN DASHBOARD
+-------------------------------------------------- */
+
+.table tr th .col1 {
+	width: 30%;
+}
+
+.table tr th .col2 {
+	width: 30%;
+}
+
+.table tr th .col3 {
+	width: 30%;
+}
+
+.table tr th .col4 {
+	width: 100%;
+}
+
+
+/* NEW FOLDER FORM
+-------------------------------------------------- */
+
+#public-check {
+  padding: 10px;
+  margin-bottom: 15px;
+}

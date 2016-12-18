@@ -1,21 +1,145 @@
-<div class= "col-md-3">
-  <h4>Folders</h4>
 
-  <h5><%= current_folder.name %></h5>
 
-  <% current_folder.path_to_folder.each do |folder| %>
-    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
-  <% end %>
-  <br>
-  <br>
+  <div class="mainbox col-md-3 col-md-offset-1">
 
-  <% current_folder.children.each do |folder| %>
-    <%= link_to folder.name, current_folder_path(folder.id) %>
-  <% end %>
-  <br>
-  <%= link_to "Parent Folder", up_path %>
-  <br>
-  <%= link_to "Root", root_folder_path %>
-  <br>
-  <%= link_to "New Folder", new_folder_path %>
-</div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <div class="panel-title">Folders</div>
+      </div>
+
+      <div class="panel-body">
+        <div class='personal-folders-panel'>
+          <div class='col-md-12 folder-view-nav'>
+            <div class='float-right'>
+              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
+                <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %>
+              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
+                <%= link_to "Parent Folder", up_path %>
+            </div>
+            <div class="float-left"><span class="glyphicon glyphicon-menu-down"></span>Current Folder</div>
+          </div>
+
+          <div class='col-md-12'>
+            <div class="float-left"><span class="current-folder glyphicon glyphicon-folder-open"></span> - /<%= current_folder.name %><span class="glyphicon glyphicon-triangle-bottom"></span></div>
+          </div>
+          <div class='col-md-12'>
+              <ul class='personal-folders-list'>
+            <% current_folder.children.each do |folder| %>
+                <li><span class="glyphicon glyphicon-folder-close"></span>
+                 - /<%= link_to folder.name, current_folder_path(folder.id) %><span class="glyphicon glyphicon-triangle-right"></span></li>
+            <% end %>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <div class="panel-title">Shared Folders</div>
+      </div>
+
+      <div class="panel-body shared-folders">
+        <div class='personal-folders-panel'>
+
+            <div class='col-md-12'>
+                <ul class='personal-folders-list'>
+              <% @shared_folders.by_owner.each do |owner, folders| %>
+                <h5><%= owner.username %></h5>
+                  <% folders.each do |folder| %>
+                    <p><%= link_to folder.name, current_folder_path(folder.id) %></li></p>
+                  <% end %>
+              <% end %>
+                </ul>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="mainbox col-md-7">
+    <div class="panel panel-info">
+
+      <div class="panel-heading">
+        <div class="panel-title">
+          <% current_folder.path_to_folder.each do |folder| %>
+            <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel-body new-user">
+        <div class='documents-panel'>
+
+              <div class='col-lg-12'>
+                <div class='files-nav'>
+                <div class='float-left'>
+                  <div class='btn btn-primary'>
+                    <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
+                    <a href='/folders/new' %><span class="create-new-folder glyphicon glyphicon-folder-open"></span></a>
+                  </div>
+                </div>
+
+                <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
+                  <%= file_field_tag :file, class: 'upload-file-button btn btn-primary float-right' %>
+                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %>
+                <% end %>
+                </div>
+              </div>
+
+          <table class="table table-striped">
+            <col width="40%">
+            <col width="10%">
+            <col width="20%">
+            <col width="30%">
+            <thead>
+              <tr>
+                <th>Document Name</th>
+                <th>Kind</th>
+                <th>Created At</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+                <% current_folder.children.each do |folder| %>
+                  <tr>
+                    <td>
+                      <%= link_to folder.name, current_folder_path(folder.id) %>
+                    </td>
+                    <td>
+                        <p>Folder</p>
+                    </td>
+                    <td>
+                        <p><%= folder.created_at %></p>
+                    </td>
+                    <td></td>
+                  </tr>
+                <% end %>
+                <% current_folder.uploads.each do |upload| %>
+                  <% extn = File.extname  upload.name   %>
+                  <% name = File.basename upload.name, extn %>
+                    <tr>
+                      <td>
+                        <%= link_to name, upload.url -%>
+                      </td>
+                      <td>
+                          <p><%= extn %></p>
+                      </td>
+                      <td>
+                          <p><%= upload.created_at %></p>
+                      </td>
+                      <td></td>
+                    </tr>
+                <% end %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

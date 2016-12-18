@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'uploads/new'
+
+  get 'uploads/create'
+
+  get 'uploads/index'
+
   root "dashboard#index"
 
   get "/login",                           to: "sessions#new"
@@ -21,4 +27,6 @@ Rails.application.routes.draw do
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
+
+  resources :uploads, only: [:index, :show, :create]
 end
