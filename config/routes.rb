@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
 
-  resources :uploads, only: [:index, :show, :create]
+  resources :uploads
 end

@@ -15,15 +15,16 @@ class UploadsController < ApplicationController
        name: obj.key
      )
 
-   if @upload.save
-     redirect_to uploads_path, success: 'File successfully uploaded'
-   else
-     flash.now[:notice] = 'There was an error'
-     render :new
-   end
- end
+    if @upload.save
+       redirect_to uploads_path, success: 'File successfully uploaded'
+    else
+       flash.now[:notice] = 'There was an error'
+       render :new
+    end
+  end
 
- def index
+
+  def index
     @uploads = Upload.all
   end
 end
