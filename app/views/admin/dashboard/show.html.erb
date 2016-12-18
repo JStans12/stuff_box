@@ -3,16 +3,8 @@
   <% @users.each do |user| %>
     <div class="user">
       <p>
-        Username: <%= user.username %>
-      </p>
-      <p>
-        Email: <%= user.email %>
-      </p>
-      <p>
-        Cellphone: <%= user.cellphone %>
-      </p>
-      <p>
-        User status: <%= user.status %>
+        Username: <%= user.username %>, Email: <%= user.email %>, Cellphone: <%= user.cellphone %>,
+            User status: <%= user.status %>,
       </p>
       <p>
         Root Folder #: <%= user.root %>
@@ -20,3 +12,9 @@
     </div>
   <% end %>
 </div>
+
+
+
+<table class="table table-bordered table-hover">
+  ...
+</table>
