@@ -77,11 +77,27 @@
                 <th>Created At</th>
               </tr>
             </thead>
+
             <tbody>
               <tr>
-                <td>File Name</td>
-                <td>File Type</td>
-                <td>File Created At</td>
+                <% current_folder.children.each do |folder| %>
+                  <td>
+                    <%= link_to folder.name, current_folder_path(folder.id) %>
+                  </td>
+                  <td>
+                      <p>Folder</p>
+                  </td>
+                  <td>
+                      <p><%= foder.created_at %></p>
+                  </td>
+                <!-- <%  uploads.each do |upload|  %> -->
+                  <td>
+                     <!-- <p><%= uploads.type_of_file %>-->
+                  </td>
+                  <td>
+                    <!-- <p><%= upload.created_at %> -->
+                  </td>
+                <% end %>
               </tr>
               <tr>
                 <td>Mary</td>
@@ -99,28 +115,3 @@
       </div>
     </div>
   </div>
-
-
-<div class= "col-md-3">
-  <h4>Folders</h4>
-
-  <h5><%= current_folder.name %></h5>
-
-  <% current_folder.path_to_folder.each do |folder| %>
-    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
-  <% end %>
-  <br>
-  <br>
-
-  <% current_folder.children.each do |folder| %>
-    <%= link_to folder.name, current_folder_path(folder.id) %>
-  <% end %>
-  <br>
-  <%= link_to "Parent Folder", up_path %>
-  <br>
-  <%= link_to "Root", root_folder_path %>
-  <br>
-  <%= link_to "New Folder", new_folder_path %>
-  
-</div>
-
