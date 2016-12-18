@@ -11,18 +11,14 @@ describe 'An admin visits the login page' do
   context "An admin can login" do
     it "visits the login page" do
       visit "/login"
-      within('#login') do
-        click_button "Log In"
-        fill_in "username", with: @admin.username
-        fill_in "email", with: @admin.email
-        fill_in "password", with: @admin.password
-        fill_in "password_confirmation", with: @admin.password
-      end
+
       within('#login') do
         fill_in "Username", with: @admin.username
         fill_in "Password", with: @admin.password
         click_button "Log In"
       end
+
+      expect(page).to have_content("Admin Dashboard View")
     end
   end
 end

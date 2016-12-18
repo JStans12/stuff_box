@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get "/update_password_verify_phone",    to: "users#verify_phone"
   post "/update_password_verify_phone",   to: "users#verify_user"
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#show'
+  end
+
   # folders
   resources :folders, only: [:new, :create]
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
