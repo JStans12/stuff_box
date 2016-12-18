@@ -18,7 +18,8 @@ class FoldersController < ApplicationController
   end
 
   def create
-    current_user.new_folder(params[:name], current_folder)
+    folder = current_user.new_folder(params[:name], current_folder)
+    folder.public_folder! if params[:public]
     redirect_to root_path
   end
 end
