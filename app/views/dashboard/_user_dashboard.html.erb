@@ -87,15 +87,15 @@
               <div class='col-lg-12'>
                 <div class='files-nav'>
                 <div class='float-left'>
-                  <div class='new-folder-box btn btn-default'>
+                  <div class='btn btn-primary'>
                     <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
                     <a href='/folders/new' %><span class="create-new-folder glyphicon glyphicon-folder-open"></span></a>
                   </div>
                 </div>
 
                 <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
-                  <%= file_field_tag :file, class: 'upload-file-upload btn btn-default float-right new-folder-box' %>
-                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-default float-right new-folder-box' %> 
+                  <%= file_field_tag :file, class: 'upload-file-button btn btn-primary float-right' %>
+                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %> 
                 <% end %>
                 </div>
               </div>

@@ -191,14 +191,20 @@ body {
 .new-folder-link {
 	padding-right: 3px;
 	font-size: 15px;
+	color: white;
+}
+
+.new-folder-link a:hover {
+	color: white;
 }
 
 .upload-file-link.btn {
 	font-size: 15px;
 }
 
-.upload-file-upload.btn {
+.upload-file-button.btn {
 	font-size: 15px;
+	margin-left: 10px;
 }
 
 .upload-file-link.new-folder-box {
@@ -239,16 +245,14 @@ body {
 	font-size: 10px;
 }
 
-.btn-default {
-	color: #337ab7;
-}
 
-.btn {
+.files-nav.btn important! {
 	min-height: 30px;
 	padding-left: 10px;	
 	padding-right: 10px;	
 	padding-bottom: 1px;	
 	padding-top: 1px;	
+	border-radius: 10px;
 }
 
 .files-nav {
@@ -258,6 +262,7 @@ body {
 
 .create-new-folder.glyphicon-folder-open {
 	font-size: 15px;
+	color: white;
 }
 
 
