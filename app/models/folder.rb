@@ -11,11 +11,14 @@ class Folder < ApplicationRecord
   has_many :uploads
 
   def self.owners
-    # list of all onwers
+    User.find(all.pluck(:owner_id).uniq)
   end
 
   def self.by_owner
-    # hash of owner pointing to folders
+    owners.reduce({}) do |r, owner|
+      r[owner] = self.where( {owner_id: owner.id} )
+      r
+    end
   end
 
   def path_to_folder
