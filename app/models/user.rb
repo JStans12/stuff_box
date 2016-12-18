@@ -46,4 +46,12 @@ class User < ApplicationRecord
   def shared_with_me
     folders.where(user_folders: { permissions: 1 })
   end
+
+  def is_shared_with_me?(folder)
+    return true if folders.include?(folder)
+  end
+
+  def allowed_to_see?(folder)
+    return true if folder.public? || folder.owner == self || is_shared_with_me?(folder)
+  end
 end

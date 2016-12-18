@@ -35,4 +35,8 @@ class Folder < ApplicationRecord
     where(visibility: "public_folder")
   end
 
+  def public?
+    return true if visibility == "public_folder"
+  end
+
 end
