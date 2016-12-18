@@ -176,13 +176,23 @@ body {
 	vertical-align: center;
 }
 
+.new-folder-box {
+	margin-bottom: 10px;
+	text-align: center;
+	vertical-align: center;
+	border: 2px solid #bce8f1;
+	border-radius: 10px;
+	background-color: #d9edf7;
+}
+
 .new-folder-link {
 	padding-right: 20px;
 	font-size: 20px;
 }
 
-.home-link {
-	font-size: 20px;
+.folder-view-nav {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #bce8f1;
 }
 
 .glyphicon-folder-open {
@@ -190,12 +200,16 @@ body {
 }
 
 .glyphicon-level-up {
-	padding-right: 10px;
+	padding-right: 5px;
 	font-size: 15px;
 }
 
 .float-left {
 	float: left;
+}
+
+.root-folder-link {
+	padding-right: 10px;
 }
 
 .float-right {
@@ -211,7 +225,7 @@ body {
 }
 
 .shared-folders-panel {
-	min-height: 300px;
+	min-height: 305px;
 }
 
 /* NEW FOLDER FORM

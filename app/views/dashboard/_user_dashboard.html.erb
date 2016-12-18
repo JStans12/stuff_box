@@ -10,12 +10,24 @@
       <div class="panel-body">
         <div class='personal-folders-panel'>
           <div class='col-md-12'>
-            <div class="float-left"><%= link_to "Home", root_folder_path, class: 'home-link' %></div>
-            <div class='float-right'><%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %><a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a></div>
+            <div class='new-folder-box'>
+              <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
+              <a href='/folders/new' %><span class="glyphicon glyphicon-folder-open"></span></a>
+            </div>
           </div>
+
+          <div class='col-md-12 folder-view-nav'>
+            <div class="float-left">Current Folder</div>
+            <div class='float-right'>
+              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
+                <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %> 
+              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
+                <%= link_to "Parent Folder", up_path %>
+            </div>
+          </div>
+
           <div class='col-md-12'>
             <div class="float-left">/<%= current_folder.name %></div>
-            <div class='float-right'><a href='/up'><span class="glyphicon glyphicon-level-up"></span></a><%= link_to "Parent Folder", up_path %></div>
           </div>
           <div class='col-md-12'>
             <% current_folder.children.each do |folder| %>
