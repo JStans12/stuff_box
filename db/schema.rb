@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20161218001705) do
   create_table "folders", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "visibility", default: 0
   end
 
   create_table "uploads", force: :cascade do |t|

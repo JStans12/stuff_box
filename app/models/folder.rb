@@ -2,6 +2,8 @@ class Folder < ApplicationRecord
   has_many :children, class_name: "Folder", foreign_key: "parent_id"
   belongs_to :parent, class_name: "Folder", foreign_key: "parent_id", required: false
 
+  enum visibility: [:private_folder, :public_folder]
+
   has_many :user_folders, dependent: :destroy
   has_many :users, through: :user_folders
 
@@ -20,4 +22,9 @@ class Folder < ApplicationRecord
     end
     path.reverse
   end
+
+  def self.public
+    where(visibility: "public_folder")
+  end
+
 end
