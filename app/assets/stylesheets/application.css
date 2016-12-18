@@ -186,7 +186,7 @@ body {
 }
 
 .new-folder-link {
-	padding-right: 20px;
+	padding-right: 3px;
 	font-size: 20px;
 }
 
@@ -195,21 +195,48 @@ body {
 	border-bottom: 1px solid #bce8f1;
 }
 
+.glyphicon-triangle-right {
+	padding-left: 3px;
+	font-size: 10px;
+}
+
+.glyphicon-triangle-bottom {
+	padding-left: 3px;
+	font-size: 10px;
+}
+
 .glyphicon-folder-open {
+	padding-right: 3px;
+}
+
+.create-new-folder.glyphicon-folder-open {
 	font-size: 20px;
 }
 
 .glyphicon-level-up {
-	padding-right: 5px;
+	padding-right: 3px;
 	font-size: 15px;
+}
+
+.glyphicon-menu-down {
+	padding-right: 3px;
+}
+
+.glyphicon-folder-close {
+	padding-right: 3px;
 }
 
 .float-left {
 	float: left;
 }
 
+
 .root-folder-link {
-	padding-right: 10px;
+	padding-right: 3px;
+}
+
+ul.personal-folders-list {
+	list-style-type: none;
 }
 
 .float-right {
@@ -227,6 +254,27 @@ body {
 .shared-folders-panel {
 	min-height: 305px;
 }
+
+
+				/* TABLE WITHIN DASHBOARD
+-------------------------------------------------- */
+
+.table tr th .col1 {
+	width: 30%;
+}
+
+.table tr th .col2 {
+	width: 30%;
+}
+
+.table tr th .col3 {
+	width: 30%;
+}
+
+.table tr th .col4 {
+	width: 100%;
+}
+
 
 /* NEW FOLDER FORM
 -------------------------------------------------- */
