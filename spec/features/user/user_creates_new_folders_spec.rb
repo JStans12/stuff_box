@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "User logs in" do
   context "they can create folders" do
     it "can see the folder they created" do
-      user = User.create(username: "John Elway", password: "je", password_confirmation: "je", email: 'je@je.com', cellphone: '1234561234')
+      user = User.create(username: "Madonna", password: "m", password_confirmation: "m", email: 'm@m.com', cellphone: '3038857241')
       user.confirmed!
       visit '/login'
 

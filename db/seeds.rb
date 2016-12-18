@@ -12,7 +12,16 @@ user3 = User.create!(username: "Barack Obama", password: "bo", password_confirma
 user4 = User.create!(username: "Donald Trump", password: "dt", password_confirmation: "dt", email: "dt@example.com", cellphone: "4639398844")
 user5 = User.create!(username: "Von Miller", password: "vm", password_confirmation: "vm", email: "vm@example.com", cellphone: "3039362718")
 user6 = User.create!(username: "Albert Einstein", password: "ae", password_confirmation: "ae", email: "ae@example.com", cellphone: "4159395611")
+puts "Created 1 admin and 6 users!"
 
+admin.confirmed!
+user1.confirmed!
+user2.confirmed!
+user3.confirmed!
+user4.confirmed!
+user5.confirmed!
+user6.confirmed!
+puts "Set all statuses to confirmed!"
 
 user1.new_folder("Music")
 user1.new_folder("Work Files")
@@ -28,3 +37,4 @@ user5.new_folder("Artwork")
 user6.new_folder("Music")
 user6.new_folder("Work Files")
 user6.new_folder("Inventions")
+puts "Created 14 folders (in addition to the 7 root folders) !"

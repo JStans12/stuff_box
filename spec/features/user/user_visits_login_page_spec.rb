@@ -33,7 +33,7 @@ RSpec.feature "User visits login page" do
 
   context "they can log in" do
     it "with a valid username and password" do
-      user = User.create(username: "John Elway", password: "je", password_confirmation: "je", email: 'je@je.com', cellphone: '1234561234', status: 1)
+      user = User.create(username: "Madonna", password: "m", password_confirmation: "m", email: 'm@m.com', cellphone: '3038857241')
       user.confirmed!
       visit '/login'
 
