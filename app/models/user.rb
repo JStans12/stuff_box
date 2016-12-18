@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :user_folders
   has_many :folders, through: :user_folders, dependent: :destroy
 
+  has_many :uploads, through: :folders
+
   def root_folder
     Folder.find(root)
   end

@@ -10,7 +10,6 @@ source 'https://rubygems.org'
   gem 'coffee-rails', '~> 4.2'
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.5'
-  gem 'faker'
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
@@ -36,6 +35,7 @@ group :development, :test do
   gem 'vcr'
   gem 'webmock'
   gem 'pry'
+  gem 'better_errors'
 end
 
 group :development do
