@@ -1,4 +1,5 @@
 
+
   <div class="mainbox col-md-3 col-md-offset-1">
 
     <div class="panel panel-info">
@@ -115,3 +116,34 @@
       </div>
     </div>
   </div>
+
+
+<div class= "col-md-3">
+  <h4>Folders</h4>
+
+  <h5><%= current_folder.name %></h5>
+
+  <% current_folder.path_to_folder.each do |folder| %>
+    <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
+  <% end %>
+  <br>
+  <br>
+
+  <% current_folder.children.each do |folder| %>
+    <%= link_to folder.name, current_folder_path(folder.id) %>
+  <% end %>
+  <br>
+  <%= link_to "Parent Folder", up_path %>
+  <br>
+  <%= link_to "Root", root_folder_path %>
+  <br>
+  <%= link_to "New Folder", new_folder_path %>
+
+  <h1>Upload a file</h1>
+
+  <%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
+  	<%= file_field_tag :file  %>
+  	<%= submit_tag 'Upload file' %>
+  <% end %>
+</div>
+

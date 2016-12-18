@@ -214,4 +214,10 @@ body {
 	min-height: 300px;
 }
 
+/* NEW FOLDER FORM
+-------------------------------------------------- */
 
+#public-check {
+  padding: 10px;
+  margin-bottom: 15px;
+}
