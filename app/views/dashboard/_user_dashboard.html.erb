@@ -1,7 +1,5 @@
 
-
   <div class="mainbox col-md-3 col-md-offset-1">
-
     <div class="panel panel-info">
       <div class="panel-heading">
           <div class="panel-title">Folders</div>
@@ -40,29 +38,18 @@
           <div class="panel-title">Shared Folders</div>
       </div>
 
-      <div class="panel-body">
+      <div class="panel-body shared-folders">
         <div class='personal-folders-panel'>
-          <div class='col-md-12 folder-view-nav'>
-            <div class='float-right'>
-              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "All Shared", root_folder_path, class: 'root-folder-link' %>
-              <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "Parent Folder", up_path %>
+            <div class='col-md-12'>
+                <ul class='personal-folders-list'>
+              <% @shared_folders.by_owner.each do |owner, folders| %>
+                <h5><%= owner.username %></h5>
+                  <% folders.each do |folder| %>
+                    <p><%= link_to folder.name, current_folder_path(folder.id) %></li></p>
+                  <% end %>
+              <% end %>
+                </ul>
             </div>
-            <div class="float-left"><span class="glyphicon glyphicon-menu-down"></span>Current Folder</div>
-          </div>
-
-          <div class='col-md-12'>
-            <div class="float-left"><span class="current-folder glyphicon glyphicon-folder-open"></span> - /<%= current_folder.name %><span class="glyphicon glyphicon-triangle-bottom"></span></div>
-          </div>
-          <div class='col-md-12'>
-              <ul class='personal-folders-list'>
-            <% current_folder.children.each do |folder| %>
-                <li><span class="glyphicon glyphicon-folder-close"></span>
-                 - /<%= link_to folder.name, current_folder_path(folder.id) %><span class="glyphicon glyphicon-triangle-right"></span></li>
-            <% end %>
-              </ul>
-          </div>
         </div>
       </div>
     </div>

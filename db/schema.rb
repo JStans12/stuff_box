@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218081321) do
+ActiveRecord::Schema.define(version: 20161219194346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20161218081321) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "visibility", default: 0
+    t.integer  "owner_id"
+  end
+
+  create_table "shares", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_shares_on_folder_id", using: :btree
+    t.index ["user_id"], name: "index_shares_on_user_id", using: :btree
   end
 
   create_table "uploads", force: :cascade do |t|
@@ -31,16 +41,6 @@ ActiveRecord::Schema.define(version: 20161218081321) do
     t.datetime "updated_at", null: false
     t.integer  "folder_id"
     t.index ["folder_id"], name: "index_uploads_on_folder_id", using: :btree
-  end
-
-  create_table "user_folders", force: :cascade do |t|
-    t.integer  "permissions"
-    t.integer  "user_id"
-    t.integer  "folder_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["folder_id"], name: "index_user_folders_on_folder_id", using: :btree
-    t.index ["user_id"], name: "index_user_folders_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +55,6 @@ ActiveRecord::Schema.define(version: 20161218081321) do
     t.integer  "root"
   end
 
-  add_foreign_key "user_folders", "folders"
-  add_foreign_key "user_folders", "users"
+  add_foreign_key "shares", "folders"
+  add_foreign_key "shares", "users"
 end

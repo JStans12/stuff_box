@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserFolder, type: :model do
+RSpec.describe Share, type: :model do
 
   describe "relationships" do
     it { should respond_to(:user)}

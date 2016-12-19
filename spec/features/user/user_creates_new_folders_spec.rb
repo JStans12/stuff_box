@@ -3,12 +3,15 @@ require 'rails_helper'
 RSpec.feature "User logs in" do
   context "they can create folders" do
     it "can see the folder they created" do
-      user = User.create(username: "John Elway", password: "je", password_confirmation: "je", email: 'je@je.com', cellphone: '1234561234')
+      user = User.create(username: "Madonna", password: "m", password_confirmation: "m", email: 'm@m.com', cellphone: '3038857241')
+      user.confirmed!
+      visit '/login'
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      allow_any_instance_of(ApplicationController).to receive(:current_folder).and_return(user.root_folder)
-
-      visit '/'
+      within('#login') do
+        fill_in "Username", with: user.username
+        fill_in "Password", with: user.password
+        click_button "Log In"
+      end
 
       click_on "New Folder"
       fill_in "Name", with: "Music"
@@ -16,11 +19,7 @@ RSpec.feature "User logs in" do
 
       expect(user.folders.count).to eq(2)
       expect(user.root_folder.children.first.name).to eq("Music")
-      # expect(page).to have_content('Music')
-      # TODO I can't get this to show up on the page, but byebug shows that the relationship is correct
-      # It seems to be the same error that occures in rails console
-      # I'm just testing the relationships instead for now
-      # The next test will verify that a user's folders actually show up correctly
+      expect(page).to have_content('Music')
     end
 
     it "can see multiple folders they created" do
