@@ -1,29 +1,11 @@
 class Admin::DashboardController < Admin::BaseController
 
-  def show
+  def index
     @users = User.all
   end
 
-  def edit
-    user = User.find(params[:user])
-  end
-
-  def update
-    user = User.find(params[:user])
-    @user.update(user_params)
-    if @user.save
-      flash[:success] = "Account for #{@user.username} updated!"
-      redirect_to admin_dashboard_path
-    else
-      render :new
-    end
-  end
-
-  def destroy
-    user = User.find(params[:user])
-    user.destroy!
-    flash[:success] = "User deleted"
-    redirect_to admin_dashboard_path
+  def show
+    @user = User.find(params[:id])
   end
 
   private
