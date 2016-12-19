@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Folder, type: :model do
 
   describe "relationships" do
-    it { should respond_to(:user_folders)}
+    it { should respond_to(:shares)}
     it { should respond_to(:authorized_viewers)}
     it { should respond_to(:children)}
     it { should respond_to(:parent)}

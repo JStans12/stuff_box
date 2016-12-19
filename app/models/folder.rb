@@ -5,8 +5,8 @@ class Folder < ApplicationRecord
 
   enum visibility: [:private_folder, :public_folder]
 
-  has_many :user_folders
-  has_many :authorized_viewers, through: :user_folders, source: :user
+  has_many :shares
+  has_many :authorized_viewers, through: :shares, source: :user
 
   has_many :uploads
 

@@ -11,8 +11,8 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
   enum status: [:pending, :confirmed]
 
-  has_many :user_folders
-  has_many :shared_with_me, through: :user_folders, source: :folder
+  has_many :shares
+  has_many :shared_with_me, through: :shares, source: :folder
   has_many :folders, class_name: "Folder", foreign_key: "owner_id"
 
   has_many :uploads, through: :folders
@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   def share_folder(user, folder)
     if folder.owner == self
-      user.user_folders.create(folder_id: folder.id, user_id: user.id)
+      user.shares.create(folder_id: folder.id, user_id: user.id)
     end
   end
 
