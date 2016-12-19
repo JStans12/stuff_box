@@ -49,4 +49,10 @@ class Folder < ApplicationRecord
     end
   end
 
+  def share_with_authorized_viewers
+    parent.authorized_viewers.each do |viewer|
+      owner.share_folder(viewer, self)
+    end
+  end
+
 end

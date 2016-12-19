@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   def new_folder(name, parent = root_folder)
     folder = folders.create(name: name, parent_id: parent.id, owner_id: id)
+    folder.share_with_authorized_viewers
     folder
   end
 
