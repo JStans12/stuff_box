@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
+  get "/share/:folder", to: "folders#share_form", as: "share"
+  post "/share", to: "folders#share"
 
 
   resources :uploads, only: [:index, :show, :create]
