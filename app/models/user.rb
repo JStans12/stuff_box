@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def create_root_folder
-    folders.create(name: "root", owner_id: id)
+    root = folders.create(name: "root", owner_id: id)
     update(root: root.id)
     save
   end
