@@ -3,9 +3,7 @@
 
     <div class="panel-heading">
       <div class="panel-title">
-        <% current_folder.path_to_folder.each do |folder| %>
-          <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
-        <% end %>
+        <p><%= current_folder.name %> | Shared by: <%= current_folder.owner.username %>
       </div>
     </div>
 
@@ -13,22 +11,6 @@
 
     <div class="panel-body new-user">
       <div class='documents-panel'>
-
-            <div class='col-lg-12'>
-              <div class='files-nav'>
-              <div class='float-left'>
-                <div class='btn btn-primary'>
-                  <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
-                  <a href='/folders/new' %><span class="create-new-folder glyphicon glyphicon-folder-open"></span></a>
-                </div>
-              </div>
-
-              <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
-                <%= file_field_tag :file, class: 'upload-file-button btn btn-primary float-right' %>
-                <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %>
-              <% end %>
-              </div>
-            </div>
 
         <table class="table table-striped">
           <col width="10%">
@@ -42,8 +24,6 @@
               <th>Document Name</th>
               <th>Kind</th>
               <th>Created At</th>
-              <th></th>
-              <th></th>
             </tr>
           </thead>
 
@@ -54,14 +34,7 @@
                   <td><%= link_to folder.name, current_folder_path(folder.id) %></td>
                   <td><p>Folder</p></td>
                   <td><p><%= folder.created_at %></p></td>
-                  <td>
 
-                    <%= link_to "Make Private", private_path(folder.id), method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>
-                    <%= link_to "Make Public", public_path(folder.id), method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>
-
-                    <%=  link_to 'Delete', folder_path(folder.id), method: 'delete', type: 'button', class: "btn btn-primary btn-xs" %>
-
-                  </td>
                 </tr>
               <% end %>
               <% current_folder.uploads.each do |upload| %>
