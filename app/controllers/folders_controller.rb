@@ -25,7 +25,7 @@ class FoldersController < ApplicationController
 
   def public
     folder = Folder.find(params[:folder])
-    if folder.original_owner?(current_user)
+    if folder.owner == current_user
       folder.public_folder!
       redirect_to root_path, success: "Folder is now public"
     else
@@ -35,18 +35,17 @@ class FoldersController < ApplicationController
 
   def private
      folder = Folder.find(params[:folder])
-    if folder.original_owner?(current_user)
+    if folder.owner == current_user
       folder.private_folder!
       redirect_to root_path, success: 'Folder is now private'
     else
-      pry
       redirect_to root_path, danger: 'Do not have permission'
     end
   end
 
   def destroy
      folder = Folder.find(params[:id])
-    if folder.original_owner?(current_user)
+    if folder.owner = current_user
       folder.destroy
       redirect_to root_path, success: 'Folder is deleted'
     else
