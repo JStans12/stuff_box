@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
-    resources :users, only: [:show, :edit, :update, :destroy]
+    delete '/dashboard', to: 'dashboard#destroy'
+    resources :users, only: [:show, :edit, :update]
   end
 
   # folders

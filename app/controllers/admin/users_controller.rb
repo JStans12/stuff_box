@@ -2,7 +2,6 @@ class Admin::UsersController < Admin::BaseController
   before_action :admin_user,     only: :destroy
 
   def show
-    @user = User.find(current_user.id)
   end
 
   def edit
@@ -18,14 +17,6 @@ class Admin::UsersController < Admin::BaseController
     else
       render :new
     end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:success] = "User deleted"
-    redirect_to admin_dashboard_path
-  end
-
   end
 
   private
@@ -37,5 +28,4 @@ class Admin::UsersController < Admin::BaseController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-
 end
