@@ -12,7 +12,8 @@ class User < ApplicationRecord
   enum status: [:pending, :confirmed]
 
   has_many :user_folders
-  has_many :folders, through: :user_folders, dependent: :destroy
+  has_many :shared_with_me, through: :user_folders, source: :folder
+  has_many :folders, class_name: "Folder", foreign_key: "owner_id"
 
   has_many :uploads, through: :folders
 
@@ -21,15 +22,13 @@ class User < ApplicationRecord
   end
 
   def create_root_folder
-    root = Folder.create(name: "root", owner_id: id)
-    user_folders.create(folder_id: root.id, permissions: 0)
+    folders.create(name: "root", owner_id: id)
     update(root: root.id)
     save
   end
 
   def new_folder(name, parent = root_folder)
-    folder = Folder.create(name: name, parent_id: parent.id, owner_id: id)
-    user_folders.create(folder_id: folder.id, permissions: 0)
+    folder = folders.create(name: name, parent_id: parent.id, owner_id: id)
     folder
   end
 
@@ -41,10 +40,6 @@ class User < ApplicationRecord
     if folder.owner == self
       user.user_folders.create(folder_id: folder.id, user_id: user.id, permissions: 1)
     end
-  end
-
-  def shared_with_me
-    folders.where(user_folders: { permissions: 1 })
   end
 
   def is_shared_with_me?(folder)
