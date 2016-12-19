@@ -21,6 +21,10 @@ class Folder < ApplicationRecord
     end
   end
 
+  def self.public
+    where(visibility: "public_folder")
+  end
+
   def path_to_folder
     path = []
     folder = self
@@ -30,13 +34,4 @@ class Folder < ApplicationRecord
     end
     path.reverse
   end
-
-  def self.public
-    where(visibility: "public_folder")
-  end
-
-  def public?
-    return true if visibility == "public_folder"
-  end
-
 end
