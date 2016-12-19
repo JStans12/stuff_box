@@ -19,9 +19,8 @@ Rails.application.routes.draw do
   post "/update_password_verify_phone",   to: "users#verify_user"
 
   namespace :admin do
-    get '/dashboard', to: 'dashboard#show'
-    delete '/dashboard', to: 'dashboard#destroy'
-    resources :users, only: [:show, :edit, :update]
+    resources :dashboard, only: [:show, :edit, :update, :destroy]
+    resources :users, only: [:show]
   end
 
   # folders
