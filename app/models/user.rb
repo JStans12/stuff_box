@@ -32,10 +32,6 @@ class User < ApplicationRecord
     folder
   end
 
-  def my_folders
-    folders.where(user_folders: { permissions: 0})
-  end
-
   def share_folder(user, folder)
     if folder.owner == self
       user.user_folders.create(folder_id: folder.id, user_id: user.id, permissions: 1)
