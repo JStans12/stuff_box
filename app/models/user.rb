@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   def share_folder(user, folder)
     if folder.owner == self
-      user.user_folders.create(folder_id: folder.id, user_id: user.id, permissions: 1)
+      user.user_folders.create(folder_id: folder.id, user_id: user.id)
     end
   end
 

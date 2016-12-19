@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218181252) do
+ActiveRecord::Schema.define(version: 20161219194016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,10 @@ ActiveRecord::Schema.define(version: 20161218181252) do
   end
 
   create_table "user_folders", force: :cascade do |t|
-    t.integer  "permissions"
     t.integer  "user_id"
     t.integer  "folder_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["folder_id"], name: "index_user_folders_on_folder_id", using: :btree
     t.index ["user_id"], name: "index_user_folders_on_user_id", using: :btree
   end
