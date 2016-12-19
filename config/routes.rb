@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'uploads/index'
 
+  post 'uploads/download/:id', to: "uploads#download", as: "download"
+
   root "dashboard#index"
 
   get "/login",                           to: "sessions#new"
@@ -24,5 +26,6 @@ Rails.application.routes.draw do
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
 
-  resources :uploads, only: [:index, :show, :create]
+
+  resources :uploads, only: [:index, :create, :new]
 end

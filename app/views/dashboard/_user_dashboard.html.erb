@@ -12,7 +12,7 @@
           <div class='col-md-12 folder-view-nav'>
             <div class='float-right'>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %> 
+                <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
                 <%= link_to "Parent Folder", up_path %>
             </div>
@@ -45,7 +45,7 @@
           <div class='col-md-12 folder-view-nav'>
             <div class='float-right'>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
-                <%= link_to "All Shared", root_folder_path, class: 'root-folder-link' %> 
+                <%= link_to "All Shared", root_folder_path, class: 'root-folder-link' %>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
                 <%= link_to "Parent Folder", up_path %>
             </div>
@@ -95,7 +95,7 @@
 
                 <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
                   <%= file_field_tag :file, class: 'upload-file-button btn btn-primary float-right' %>
-                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %> 
+                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %>
                 <% end %>
                 </div>
               </div>
@@ -110,6 +110,7 @@
                 <th>Document Name</th>
                 <th>Kind</th>
                 <th>Created At</th>
+                <th>Download</th>
                 <th></th>
               </tr>
             </thead>
@@ -130,8 +131,8 @@
                   </tr>
                 <% end %>
                 <% current_folder.uploads.each do |upload| %>
-                  <% extn = File.extname  upload.name   %>     
-                  <% name = File.basename upload.name, extn %>  
+                  <% extn = File.extname  upload.name   %>
+                  <% name = File.basename upload.name, extn %>
                     <tr>
                       <td>
                         <%= link_to name, upload.url -%>
@@ -142,14 +143,16 @@
                       <td>
                           <p><%= upload.created_at %></p>
                       </td>
+                      <td>
+                         <p><%= button_to 'Download', download_path(upload) %></p>
+                      </td>
                       <td></td>
                     </tr>
                 <% end %>
-   
+
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-
