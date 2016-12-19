@@ -12,8 +12,7 @@ class Upload < ApplicationRecord
 
   def save_file(file)
     path = File.expand_path("~/Downloads")
-    temp_path = File.expand_path("~/temp")
-    download = File.open("#{temp_path}/#{file}", 'wb').write(bucket.objects[file.name].read)
+    download = File.open("#{path}/#{file.name}", 'wb').write(bucket.objects[file.name].read)
   end
 
 
