@@ -56,7 +56,7 @@
 
   </div>
 
-  <% if current_user == current_folder.id %>
+  <% if current_user == current_folder.owner %>
     <%= render "own_folder" %>
   <% else %>
     <%= render "shared_folder" %>
