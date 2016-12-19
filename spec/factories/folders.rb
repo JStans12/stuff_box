@@ -1,6 +1,10 @@
 FactoryGirl.define do
-  factory :folder do
-    name "MyString"
-    parent_id 1
+
+  sequence :name do |n|
+    "folder#{n}"
+  end
+
+  sequence :parent_id do |n|
+    n
   end
 end

@@ -18,7 +18,38 @@ class FoldersController < ApplicationController
   end
 
   def create
-    current_user.new_folder(params[:name], current_folder)
+    folder = current_user.new_folder(params[:name], current_folder)
+    folder.public_folder! if params[:public]
     redirect_to root_path
+  end
+
+  def public
+    folder = Folder.find(params[:folder])
+    if folder.owner == current_user
+      folder.public_folder!
+      redirect_to root_path, success: "Folder is now public"
+    else
+      redirect_to root_path, danger: 'Do not have permission'
+    end
+  end
+
+  def private
+     folder = Folder.find(params[:folder])
+    if folder.owner == current_user
+      folder.private_folder!
+      redirect_to root_path, success: 'Folder is now private'
+    else
+      redirect_to root_path, danger: 'Do not have permission'
+    end
+  end
+
+  def destroy
+     folder = Folder.find(params[:id])
+    if folder.owner = current_user
+      folder.destroy
+      redirect_to root_path, success: 'Folder is deleted'
+    else
+      redirect_to root_path, danger: 'Do not have permission'
+    end
   end
 end

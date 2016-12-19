@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'uploads/new'
+
+  get 'uploads/create'
+
+  get 'uploads/index'
+
   root "dashboard#index"
 
   get "/login",                           to: "sessions#new"
@@ -12,10 +18,18 @@ Rails.application.routes.draw do
   get "/update_password_verify_phone",    to: "users#verify_phone"
   post "/update_password_verify_phone",   to: "users#verify_user"
 
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#show'
+    resources :users, only: [:show]
+  end
+
+  # folders
+  get "/public/:folder", to: "folders#public", as: "public"
+  get "/private/:folder", to: "folders#private", as: "private"
+  resources :folders, only: [:new, :create, :destroy]
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
-  get "/new_folder", to: "folders#new"
-  post "/create_folder", to: "folders#create"
 
+  resources :uploads, only: [:index, :show, :create, :destroy]
 end
