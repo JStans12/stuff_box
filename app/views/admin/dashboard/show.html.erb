@@ -9,6 +9,8 @@
         <th>Cellphone</th>
         <th>Status</th>
         <th>Root Folder ID</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -16,10 +18,15 @@
       <tr>
         <td><%=  user.id %></td>
         <td><%= link_to "#{user.username}", admin_user_path(user.id) %></td>
-        <td><%=  user.email %></td>
-        <td><%=  user.cellphone %></td>
-        <td><%=  user.status %></td>
-        <td><%=  user.root %></td>
+        <td><%= user.email %></td>
+        <td><%= user.cellphone %></td>
+        <td><%= user.status %></td>
+        <td><%= user.root %></td>
+        <td><%= button_to "Edit User", edit_admin_user_path(user), disabled: false, class: "btn btn-success" %></td>
+        <td><% if current_user.admin? && (current_user != user) %>
+          <%= button_to "Delete", @user, method: :delete, class: "btn btn-danger",
+              data: { confirm: "Are you sure?" } %>
+        <% end %></td>
       </tr>
       <% end %>
     </tbody>
