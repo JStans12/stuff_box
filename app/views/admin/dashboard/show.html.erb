@@ -1,22 +1,27 @@
-<h1>Admin Dashboard Page</h1>
+<h2>Admin Dashboard Page</h2>
 <div class="container">
-  <% @users.each do |user| %>
-    <div class="user">
-      <p>
-        Username: <%= user.username %>
-      </p>
-      <p>
-        Email: <%= user.email %>
-      </p>
-      <p>
-        Cellphone: <%= user.cellphone %>
-      </p>
-      <p>
-        User status: <%= user.status %>
-      </p>
-      <p>
-        Root Folder #: <%= user.root %>
-      </p>
-    </div>
-  <% end %>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Cellphone</th>
+        <th>Status</th>
+        <th>Root Folder ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%=  user.id %></td>
+        <td><%= link_to "#{user.username}", admin_user_path(user.id) %></td>
+        <td><%=  user.email %></td>
+        <td><%=  user.cellphone %></td>
+        <td><%=  user.status %></td>
+        <td><%=  user.root %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
