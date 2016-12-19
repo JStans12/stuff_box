@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
 
   def is_shared_with_me?(folder)
-    return true if folders.include?(folder)
+    return true if shared_with_me.include?(folder)
   end
 
   def allowed_to_see?(folder)
