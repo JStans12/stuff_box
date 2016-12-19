@@ -72,6 +72,8 @@
         </div>
       </div>
 
+      <!-- Files Panel List -->
+
       <div class="panel-body new-user">
         <div class='documents-panel'>
 
@@ -92,12 +94,14 @@
               </div>
 
           <table class="table table-striped">
-            <col width="40%">
+            <col width="10%">
+            <col width="30%">
             <col width="10%">
             <col width="20%">
             <col width="30%">
             <thead>
               <tr>
+                <th>Visibility</th>
                 <th>Document Name</th>
                 <th>Kind</th>
                 <th>Created At</th>
@@ -108,32 +112,29 @@
             <tbody>
                 <% current_folder.children.each do |folder| %>
                   <tr>
+                    <td><%= folder.visibility %></td>
+                    <td><%= link_to folder.name, current_folder_path(folder.id) %></td>
+                    <td><p>Folder</p></td>
+                    <td><p><%= folder.created_at %></p></td>
                     <td>
-                      <%= link_to folder.name, current_folder_path(folder.id) %>
+
+                      <%= link_to "Make Private", private_path(folder.id), method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>
+                      <%= link_to "Make Public", public_path(folder.id), method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>
+
+                      <%=  link_to 'Delete', folder_path(folder.id), method: 'delete', type: 'button', class: "btn btn-primary btn-xs" %>
+
                     </td>
-                    <td>
-                        <p>Folder</p>
-                    </td>
-                    <td>
-                        <p><%= folder.created_at %></p>
-                    </td>
-                    <td></td>
                   </tr>
                 <% end %>
                 <% current_folder.uploads.each do |upload| %>
                   <% extn = File.extname  upload.name   %>
                   <% name = File.basename upload.name, extn %>
                     <tr>
-                      <td>
-                        <%= link_to name, upload.url -%>
-                      </td>
-                      <td>
-                          <p><%= extn %></p>
-                      </td>
-                      <td>
-                          <p><%= upload.created_at %></p>
-                      </td>
                       <td></td>
+                      <td><%= link_to name, upload.url -%></td>
+                      <td><p><%= extn %></p></td>
+                      <td><p><%= upload.created_at %></p></td>
+                      <td><%=  link_to 'Delete', upload_path(upload.id), method: 'delete', class: "btn btn-primary btn-xs", type: 'button' %></td>
                     </tr>
                 <% end %>
 
