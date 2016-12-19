@@ -34,4 +34,13 @@ class Folder < ApplicationRecord
     end
     path.reverse
   end
+
+  def self.public
+    where(visibility: "public_folder")
+  end
+
+  def public?
+    return true if visibility == "public_folder"
+  end
+
 end

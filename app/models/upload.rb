@@ -14,6 +14,4 @@ class Upload < ApplicationRecord
     path = File.expand_path("~/Downloads")
     download = File.open("#{path}/#{file.name}", 'wb').write(bucket.objects[file.name].read)
   end
-
-
 end
