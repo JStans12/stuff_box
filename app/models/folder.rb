@@ -39,4 +39,12 @@ class Folder < ApplicationRecord
     return true if visibility == "public_folder"
   end
 
+  def original_owner?(current_user)
+    folder_id = id
+    until parent_id == nil || folder_id == current_user.root_folder.id
+      folder_id = parent.id
+    end
+    folder_id == current_user.root_folder.id ? true : false
+  end
+
 end
