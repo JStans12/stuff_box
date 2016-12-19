@@ -43,4 +43,16 @@ class Folder < ApplicationRecord
     return true if visibility == "public_folder"
   end
 
+  def share_children(user, owner)
+    children.each do |child|
+      owner.share_folder(user, child)
+    end
+  end
+
+  def share_with_authorized_viewers
+    parent.authorized_viewers.each do |viewer|
+      owner.share_folder(viewer, self)
+    end
+  end
+
 end

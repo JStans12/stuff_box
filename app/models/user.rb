@@ -29,12 +29,14 @@ class User < ApplicationRecord
 
   def new_folder(name, parent = root_folder)
     folder = folders.create(name: name, parent_id: parent.id, owner_id: id)
+    folder.share_with_authorized_viewers
     folder
   end
 
   def share_folder(user, folder)
     if folder.owner == self
       user.shares.create(folder_id: folder.id, user_id: user.id)
+      folder.share_children(user, owner = self)
     end
   end
 
