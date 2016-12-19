@@ -11,8 +11,9 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
   enum status: [:pending, :confirmed]
 
-  has_many :user_folders
-  has_many :folders, through: :user_folders, dependent: :destroy
+  has_many :shares
+  has_many :shared_with_me, through: :shares, source: :folder
+  has_many :folders, class_name: "Folder", foreign_key: "owner_id"
 
   has_many :uploads, through: :folders
 
@@ -21,37 +22,29 @@ class User < ApplicationRecord
   end
 
   def create_root_folder
-    root = Folder.create(name: "root", owner_id: id)
-    user_folders.create(folder_id: root.id, permissions: 0)
+    root = folders.create(name: "root", owner_id: id)
     update(root: root.id)
     save
   end
 
   def new_folder(name, parent = root_folder)
-    folder = Folder.create(name: name, parent_id: parent.id, owner_id: id)
-    user_folders.create(folder_id: folder.id, permissions: 0)
+    folder = folders.create(name: name, parent_id: parent.id, owner_id: id)
+    folder.share_with_authorized_viewers
     folder
-  end
-
-  def my_folders
-    folders.where(user_folders: { permissions: 0})
   end
 
   def share_folder(user, folder)
     if folder.owner == self
-      user.user_folders.create(folder_id: folder.id, user_id: user.id, permissions: 1)
+      user.shares.create(folder_id: folder.id, user_id: user.id)
+      folder.share_children(user, owner = self)
     end
   end
 
-  def shared_with_me
-    folders.where(user_folders: { permissions: 1 })
-  end
-
   def is_shared_with_me?(folder)
-    return true if folders.include?(folder)
+    return true if shared_with_me.include?(folder)
   end
 
   def allowed_to_see?(folder)
-    return true if folder.public? || folder.owner == self || is_shared_with_me?(folder)
+    return true if folder.public_folder? || folder.owner == self || is_shared_with_me?(folder)
   end
 end

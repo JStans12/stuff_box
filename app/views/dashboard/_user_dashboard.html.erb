@@ -1,7 +1,5 @@
 
-
   <div class="mainbox col-md-3 col-md-offset-1">
-
     <div class="panel panel-info">
       <div class="panel-heading">
           <div class="panel-title">Folders</div>
@@ -42,7 +40,6 @@
 
       <div class="panel-body shared-folders">
         <div class='personal-folders-panel'>
-
             <div class='col-md-12'>
                 <ul class='personal-folders-list'>
               <% @shared_folders.by_owner.each do |owner, folders| %>
@@ -53,93 +50,14 @@
               <% end %>
                 </ul>
             </div>
-
         </div>
       </div>
     </div>
 
   </div>
 
-
-  <div class="mainbox col-md-7">
-    <div class="panel panel-info">
-
-      <div class="panel-heading">
-        <div class="panel-title">
-          <% current_folder.path_to_folder.each do |folder| %>
-            <%= link_to "#{folder.name} / ", current_folder_path(folder.id) %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="panel-body new-user">
-        <div class='documents-panel'>
-
-              <div class='col-lg-12'>
-                <div class='files-nav'>
-                <div class='float-left'>
-                  <div class='btn btn-primary'>
-                    <%= link_to "Create a New Folder", new_folder_path, class: 'new-folder-link' %>
-                    <a href='/folders/new' %><span class="create-new-folder glyphicon glyphicon-folder-open"></span></a>
-                  </div>
-                </div>
-
-                <%= form_tag uploads_path, enctype: 'multipart/form-data', class: 'float-right' do %>
-                  <%= file_field_tag :file, class: 'upload-file-button btn btn-primary float-right' %>
-                  <%= submit_tag 'Upload file >>', class: 'upload-file-link btn btn-primary float-right' %>
-                <% end %>
-                </div>
-              </div>
-
-          <table class="table table-striped">
-            <col width="40%">
-            <col width="10%">
-            <col width="20%">
-            <col width="30%">
-            <thead>
-              <tr>
-                <th>Document Name</th>
-                <th>Kind</th>
-                <th>Created At</th>
-                <th></th>
-              </tr>
-            </thead>
-
-            <tbody>
-                <% current_folder.children.each do |folder| %>
-                  <tr>
-                    <td>
-                      <%= link_to folder.name, current_folder_path(folder.id) %>
-                    </td>
-                    <td>
-                        <p>Folder</p>
-                    </td>
-                    <td>
-                        <p><%= folder.created_at %></p>
-                    </td>
-                    <td></td>
-                  </tr>
-                <% end %>
-                <% current_folder.uploads.each do |upload| %>
-                  <% extn = File.extname  upload.name   %>
-                  <% name = File.basename upload.name, extn %>
-                    <tr>
-                      <td>
-                        <%= link_to name, upload.url -%>
-                      </td>
-                      <td>
-                          <p><%= extn %></p>
-                      </td>
-                      <td>
-                          <p><%= upload.created_at %></p>
-                      </td>
-                      <td></td>
-                    </tr>
-                <% end %>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+  <% if current_user == current_folder.owner %>
+    <%= render "own_folder" %>
+  <% else %>
+    <%= render "shared_folder" %>
+  <% end %>
