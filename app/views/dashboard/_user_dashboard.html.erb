@@ -1,7 +1,5 @@
 
-
   <div class="mainbox col-md-3 col-md-offset-1">
-
     <div class="panel panel-info">
       <div class="panel-heading">
           <div class="panel-title">Folders</div>
@@ -42,7 +40,6 @@
 
       <div class="panel-body shared-folders">
         <div class='personal-folders-panel'>
-
             <div class='col-md-12'>
                 <ul class='personal-folders-list'>
               <% @shared_folders.by_owner.each do |owner, folders| %>
@@ -53,7 +50,6 @@
               <% end %>
                 </ul>
             </div>
-
         </div>
       </div>
     </div>
@@ -106,6 +102,7 @@
                 <th>Kind</th>
                 <th>Created At</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -130,11 +127,21 @@
                   <% extn = File.extname  upload.name   %>
                   <% name = File.basename upload.name, extn %>
                     <tr>
-                      <td></td>
-                      <td><%= link_to name, upload.url -%></td>
-                      <td><p><%= extn %></p></td>
-                      <td><p><%= upload.created_at %></p></td>
-                      <td><%=  link_to 'Delete', upload_path(upload.id), method: 'delete', class: "btn btn-primary btn-xs", type: 'button' %></td>
+                      <td>
+                      </td>
+                      <td>
+                        <%= link_to name, upload.url -%>
+                      </td>
+                      <td>
+                          <p><%= extn %></p>
+                      </td>
+                      <td>
+                          <p><%= upload.created_at %></p>
+                      </td>
+                      <td>
+                         <p><%= button_to 'Download', download_path(upload), class: "btn btn-primary btn-xs" %></p>
+                         <p><%= button_to 'Delete', uploads_destroy_path(upload), class: "btn btn-danger btn-xs" %></p>
+                      </td>
                     </tr>
                 <% end %>
 
