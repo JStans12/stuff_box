@@ -9,7 +9,6 @@ describe 'An admin visits the admin dashboard page' do
     @donny = User.create!(username: "Donald Trump", password: "dt", password_confirmation: "dt", email: "dt@example.com", cellphone: "4639398844")
     @von = User.create!(username: "Von Miller", password: "vm", password_confirmation: "vm", email: "vm@example.com", cellphone: "3039362718")
     @albert = User.create!(username: "Albert Einstein", password: "ae", password_confirmation: "ae", email: "ae@example.com", cellphone: "4159395611")
-    puts "Created 1 admin and 6 users!"
 
     @admin.confirmed!
     @john.confirmed!
@@ -18,7 +17,6 @@ describe 'An admin visits the admin dashboard page' do
     @donny.confirmed!
     @von.confirmed!
     @albert.confirmed!
-    puts "Set all statuses to confirmed!"
 
     @john.new_folder("football plays")
     @john.new_folder("cheerleader phone numbers")
