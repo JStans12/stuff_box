@@ -23,6 +23,10 @@ class FoldersController < ApplicationController
     redirect_to root_path
   end
 
+  def public_folders
+    @folders = Folder.public
+  end
+
   def share_form
     session[:current_folder_id] = params[:folder]
   end
