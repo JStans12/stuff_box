@@ -3,6 +3,12 @@ class UploadsController < ApplicationController
   def new
   end
 
+  def show
+    @upload = current_user.uploads.find(params[:id])
+    @comment = Comment.new
+    @upload_comments = @upload.comments
+  end
+
    def create
     if params[:file]
       obj = S3_BUCKET.objects[params[:file].original_filename]
