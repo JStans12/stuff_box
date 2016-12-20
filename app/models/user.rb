@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_many :uploads, through: :folders
 
+  has_many :comments
+
   def root_folder
     Folder.find(root)
   end

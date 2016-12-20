@@ -1,0 +1,15 @@
+<%= @upload.name %>
+
+<% @upload_comments.each do |comment| %>
+  <%= comment.content %>
+<% end %>
+
+<h2>Leave a Comment</h2>
+  <%= form_for [:upload, @comment] do |f| %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.hidden_field :upload_id, value: @upload.id %>
+    <%= f.submit, id: "comment-submit", %>
+  <% end %>

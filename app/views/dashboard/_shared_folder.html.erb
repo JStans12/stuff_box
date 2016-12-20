@@ -82,6 +82,7 @@
                     <td>
                        <p><%= button_to 'Download', download_path(upload), class: "btn btn-primary btn-xs" %></p>
                        <p><%= button_to 'Delete', uploads_destroy_path(upload), class: "btn btn-danger btn-xs" %></p>
+                       <p><%= link_to 'Comment', upload_path(upload), class: "btn btn-caution btn-xs" %></p>
                     </td>
                   </tr>
               <% end %>
