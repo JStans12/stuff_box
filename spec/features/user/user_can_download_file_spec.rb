@@ -16,7 +16,7 @@ RSpec.feature "User downloads" do
         click_button "Log In"
       end
 
-    expect(page).to have_button("Download")
+    expect(page).to have_content("Download")
     end
   end
   context "a user can delete a file from their folder" do
@@ -34,7 +34,7 @@ RSpec.feature "User downloads" do
         click_button "Log In"
       end
 
-    expect(page).to have_button("Delete")
+    expect(page).to have_content("Delete")
     end
   end
 end
