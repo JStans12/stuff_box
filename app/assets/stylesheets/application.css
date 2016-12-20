@@ -71,6 +71,7 @@
 .btn-primary {
   background-color: dodgerblue;
   border-color: dodgerblue;
+  margin: 2px;
 }
 
 .panel-title {
@@ -250,10 +251,10 @@ body {
 
 .files-nav.btn important! {
 	min-height: 30px;
-	padding-left: 10px;	
-	padding-right: 10px;	
-	padding-bottom: 1px;	
-	padding-top: 1px;	
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 1px;
+	padding-top: 1px;
 	border-radius: 10px;
 }
 
