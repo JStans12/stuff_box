@@ -1,13 +1,12 @@
 class Folder < ApplicationRecord
-  has_many :children, class_name: "Folder", foreign_key: "parent_id"
-  belongs_to :parent, class_name: "Folder", foreign_key: "parent_id", required: false
-  belongs_to :owner, class_name: "User", foreign_key: "owner_id", required: false
 
   enum visibility: [:private_folder, :public_folder]
 
-  has_many :shares
+  has_many :children, class_name: "Folder", foreign_key: "parent_id", dependent: :destroy
+  belongs_to :parent, class_name: "Folder", foreign_key: "parent_id", required: false
+  belongs_to :owner, class_name: "User", foreign_key: "owner_id", required: false
+  has_many :shares, dependent: :destroy
   has_many :authorized_viewers, through: :shares, source: :user
-
   has_many :uploads
 
   def self.owners
@@ -19,10 +18,6 @@ class Folder < ApplicationRecord
       r[owner] = self.where( {owner_id: owner.id} )
       r
     end
-  end
-
-  def self.public
-    where(visibility: "public_folder")
   end
 
   def path_to_folder

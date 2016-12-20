@@ -1,0 +1,34 @@
+<h2>Admin Dashboard Page</h2>
+<div class="container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Cellphone</th>
+        <th>Status</th>
+        <th>Root Folder ID</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to "#{user.username}", admin_user_path(user.id) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.cellphone %></td>
+        <td><%= user.status %></td>
+        <td><%= user.root %></td>
+        <td><%= link_to "Edit User", edit_admin_user_path(user), method: :get, class: "btn btn-success" %></td>
+        <td><% if current_user.admin? && (current_user != user) %>
+          <%= button_to 'Delete', admin_user_path(user), method: :delete, class: "btn btn-danger",
+            data: { confirm: "Are you sure?" } %></td>
+        <% end %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

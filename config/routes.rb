@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   post "/update_password_verify_phone",   to: "users#verify_user"
 
   namespace :admin do
-    get '/dashboard', to: 'dashboard#show'
-    resources :users, only: [:show]
+    resources :dashboard, only: [:index, :show]
+    resources :users
   end
 
   # folders
@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get "/dashboard/:folder", to: "folders#index", as: "current_folder"
   get "/up", to: "folders#up"
   get "/root_folder", to: "folders#root"
+  get "/share/:folder", to: "folders#share_form", as: "share"
+  post "/share", to: "folders#share"
+  get "public_folders", to: "folders#public_folders"
 
 
   resources :uploads, only: [:index, :show, :create]

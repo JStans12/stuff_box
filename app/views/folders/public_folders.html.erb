@@ -1,9 +1,9 @@
-<div class="mainbox col-md-7">
+<div class="mainbox col-md-8 col-md-offset-2">
   <div class="panel panel-info">
 
     <div class="panel-heading">
       <div class="panel-title">
-        <p><%= current_folder.name %> | Shared by: <%= current_folder.owner.username %>
+        <center><p>Folders with free stuff for everyone!</p></center>
       </div>
     </div>
 
@@ -20,17 +20,17 @@
           <col width="30%">
           <thead>
             <tr>
-              <th>Visibility</th>
-              <th>Document Name</th>
+              <th>Owner</th>
+              <th>Name</th>
               <th>Kind</th>
               <th>Created At</th>
             </tr>
           </thead>
 
           <tbody>
-              <% current_folder.children.each do |folder| %>
+              <% @folders.each do |folder| %>
                 <tr>
-                  <td><%= folder.visibility %></td>
+                  <td><%= folder.owner.username %></td>
                   <td><%= link_to folder.name, current_folder_path(folder.id) %></td>
                   <td><p>Folder</p></td>
                   <td><p><%= folder.created_at %></p></td>
@@ -55,7 +55,6 @@
                     <td>
                        <p><%= button_to 'Download', download_path(upload), class: "btn btn-primary btn-xs" %></p>
                        <p><%= button_to 'Delete', uploads_destroy_path(upload), class: "btn btn-danger btn-xs" %></p>
-                       <p><%= link_to 'Comment', upload_path(upload), class: "btn btn-caution btn-xs" %></p>
                     </td>
                   </tr>
               <% end %>

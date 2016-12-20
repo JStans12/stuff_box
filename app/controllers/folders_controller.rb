@@ -23,6 +23,21 @@ class FoldersController < ApplicationController
     redirect_to root_path
   end
 
+  def public_folders
+    @folders = Folder.public
+  end
+
+  def share_form
+    session[:current_folder_id] = params[:folder]
+  end
+
+  def share
+    user = User.find_by(username: params[:username])
+    current_user.share_folder(user, current_folder)
+    flash[:success] = "You shared #{current_folder.name} with #{user.username}!"
+    redirect_to root_path
+  end
+
   def public
     folder = Folder.find(params[:folder])
     if folder.owner == current_user
