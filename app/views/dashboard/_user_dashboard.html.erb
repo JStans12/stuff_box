@@ -45,7 +45,7 @@
               <% @shared_folders.by_owner.each do |owner, folders| %>
                 <h5><%= owner.username %></h5>
                   <% folders.each do |folder| %>
-                    <p><%= link_to folder.name, current_folder_path(folder.id) %></li></p>
+                    <p> &nbsp; &nbsp;- <%= link_to folder.name, current_folder_path(folder.id) %></li></p>
                   <% end %>
               <% end %>
                 </ul>
