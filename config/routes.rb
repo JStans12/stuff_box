@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   post "/update_password_verify_phone",   to: "users#verify_user"
 
   namespace :admin do
-    get '/dashboard', to: 'dashboard#show'
-    resources :users, only: [:show]
+    resources :dashboard, only: [:index, :show]
+    resources :users
   end
 
   # folders
