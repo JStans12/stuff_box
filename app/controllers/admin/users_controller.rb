@@ -21,7 +21,6 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     user = User.find(params[:id])
-    user.shares.destroy_all
     user.folders.destroy_all
     user.destroy!
     flash[:success] = "User deleted"
