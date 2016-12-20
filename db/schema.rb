@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219194346) do
+ActiveRecord::Schema.define(version: 20161220201531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "upload_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["upload_id"], name: "index_comments_on_upload_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "folders", force: :cascade do |t|
     t.string   "name"
@@ -55,6 +65,8 @@ ActiveRecord::Schema.define(version: 20161219194346) do
     t.integer  "root"
   end
 
+  add_foreign_key "comments", "uploads"
+  add_foreign_key "comments", "users"
   add_foreign_key "shares", "folders"
   add_foreign_key "shares", "users"
 end
