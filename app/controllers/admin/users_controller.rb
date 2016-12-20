@@ -21,8 +21,8 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     user = User.find(params[:id])
-    user.shares.delete_all
-    user.folders.delete_all
+    user.shares.destroy_all
+    user.folders.destroy_all
     user.destroy!
     flash[:success] = "User deleted"
     redirect_to admin_dashboard_index_path

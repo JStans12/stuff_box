@@ -18,7 +18,7 @@ describe 'An admin visits the login page' do
         click_button "Log In"
       end
 
-      expect(page).to have_content("Admin Dashboard View")
+      expect(page).to have_content("Admin Dashboard Page")
     end
   end
 end
