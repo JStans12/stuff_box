@@ -7,7 +7,6 @@ RSpec.feature "User downloads" do
 
     #when a user logs in
     visit '/'
-    click_link 'Login  |  Create Account'
     #they can see their files
     #they can click on download
     #the file downloads
