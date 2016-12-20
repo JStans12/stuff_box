@@ -2,7 +2,7 @@ class Folder < ApplicationRecord
 
   enum visibility: [:private_folder, :public_folder]
 
-  has_many :children, class_name: "Folder", foreign_key: "parent_id"
+  has_many :children, class_name: "Folder", foreign_key: "parent_id", dependent: :destroy
   belongs_to :parent, class_name: "Folder", foreign_key: "parent_id", required: false
   belongs_to :owner, class_name: "User", foreign_key: "owner_id", required: false
   has_many :shares, dependent: :destroy
