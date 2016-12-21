@@ -1,15 +1,27 @@
-<%= @upload.name %>
+<div class="container">
+  <div class="mainbox col-md-6 comment-form">
+    <div class="panel panel-info">
 
-<% @upload_comments.each do |comment| %>
-  <%= comment.content %>
-<% end %>
+      <div class="panel-heading">
+        <div class="panel-title"><%= @upload.name %></div>
+      </div>
 
-<h2>Leave a Comment</h2>
-  <%= form_for [:upload, @comment] do |f| %>
+      <div class="panel-body">
+        <div class="form-group">
+          <%= label_tag :content, "Comment", class: "control-label col-md-4 required-field" %>
+          <%= text_area_tag :content, "", id: "content", class: "input-md textinput textInput form-control" %>
+          <input type="hidden" id="user_id" value=<%= "#{current_user.id}" %>>
+          <input type="hidden" id="upload_id" value=<%= "#{@upload.id}" %>>
+          <input type="hidden" id="token" value=<%= "#{current_user.token}" %>>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Submit", id: "comment", class: "btn btn-primary"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="comments">
+    <%= render partial: 'shared/comments', locals: { comments: @upload.comments } %>
+  </div>
 
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-
-    <%= f.hidden_field :upload_id, value: @upload.id %>
-    <%= f.submit %>
-  <% end %>
+</div>
