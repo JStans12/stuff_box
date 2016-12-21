@@ -47,7 +47,8 @@ class UploadsController < ApplicationController
     s3 = AWS::S3.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
     bucket = s3.buckets['stuff-box']
     download = File.open("#{Rails.root}/tmp/#{file.name}", 'wb').write(bucket.objects[file.name].read)
-    send_data(download, filename: file.name)
+    send_file("#{path}/#{file.name}")
+    # filename: file.name, disposition: 'inline', :stream => 'true', :buffer_size => '4096')
   end
 
   def destroy
