@@ -44,8 +44,8 @@ class UploadsController < ApplicationController
     upload = Upload.new
     file = Upload.find(params[:id])
     path = File.expand_path("~/Downloads")
-    upload.save_file(file)
-    send_file("#{path}/#{file.name}")
+    download = File.open("#{Rails.root}/tmp/#{file.name}", 'wb').write(bucket.objects[file.name].read)
+    send_data(download, filename: file.name)
   end
 
   def destroy
