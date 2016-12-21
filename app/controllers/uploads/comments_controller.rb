@@ -1,12 +1,9 @@
 class Uploads::CommentsController < ApplicationController
 
   def create
-    Comment.create(comment_params)
-    @comments = Upload.find(params[:upload_id]).comments
-
-    respond_to do |format|
-      format.js
-    end
+    comment = Comment.create(comment_params)
+    user = User.find(params[:user_if])
+    render json: [comment: comment, user: user]
   end
 
   private
