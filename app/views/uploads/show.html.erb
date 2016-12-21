@@ -1,15 +1,35 @@
-<%= @upload.name %>
+<div class="container">
+  <div class="mainbox col-md-6 comment-form">
+    <div class="panel panel-info">
 
-<% @upload_comments.each do |comment| %>
-  <%= comment.content %>
-<% end %>
+      <div class="panel-heading">
+        <div class="panel-title"><%= @upload.name %></div>
+      </div>
 
-<h2>Leave a Comment</h2>
-  <%= form_for [:upload, @comment] do |f| %>
+      <div class="panel-body">
+        <div class="form-group">
+          <%= label_tag :content, "Comment", class: "control-label col-md-4 required-field" %>
+          <%= text_area_tag :content, "", class: "input-md textinput textInput form-control" %>
+          <%= hidden_field_tag :upload_id, value: @upload.id %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Submit", class: "btn btn-primary"%>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-
-    <%= f.hidden_field :upload_id, value: @upload.id %>
-    <%= f.submit %>
+  <% @upload.comments.each do |comment| %>
+    <div class="col-sm-6 comment">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at %></span>
+        </div>
+        <div class="panel-body">
+          <%= comment.content %>
+        </div>
+      </div>
+    </div>
   <% end %>
+
+</div>
