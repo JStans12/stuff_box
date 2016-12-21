@@ -327,3 +327,14 @@ ul.personal-folders-list {
   padding: 10px;
   margin-bottom: 15px;
 }
+
+/* COMMENTS
+-------------------------------------------------- */
+
+.comment-form {
+  height: 100vh;
+}
+
+.comment {
+  float: right;
+}
