@@ -55,7 +55,6 @@
                   <td><p>Folder</p></td>
                   <td><p><%= folder.created_at %></p></td>
                   <td>
-                    <%= link_to 'Download', download_folder_path(folder), method: :post, class: "btn btn-primary btn-xs" %>
                     <%= link_to "Make Private", private_path(folder.id), method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>
                     <%= link_to "Make Public", public_path(folder.id), method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>
                     <%= link_to "Share", share_path(folder), folder: folder, method: 'get', type: 'button', class: "btn btn-primary btn-xs" %>

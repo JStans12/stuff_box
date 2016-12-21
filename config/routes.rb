@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'uploads/index'
 
   post 'uploads/download/:id', to: "uploads#download", as: "download"
-  post 'uploads/download/folder/:id', to: "uploads#download_folder", as: "download_folder"
   root "dashboard#index"
 
   get "/login",                           to: "sessions#new"
