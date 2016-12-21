@@ -42,11 +42,6 @@ group :development, :test do
 
 end
 
-group :test do
-  gem 'selenium'
-end
-
-
 group :development do
   gem 'web-console'
 end
