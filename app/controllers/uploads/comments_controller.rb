@@ -17,10 +17,13 @@ class Uploads::CommentsController < ActionController::API
 
     def authenticate
       user = User.find(params[:user_id])
-      unless ( current_user && current_user == params[:user_id] ) ||
-             ( params[:token] == user.token )
 
-        render json { Failure: "Bad request"}
+      unless ( current_user && current_user.id.to_s == params[:user_id] ) || ( params[:token] == user.token )
+        render json: { failure: "Bad request"}
       end
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 end

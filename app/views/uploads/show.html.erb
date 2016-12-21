@@ -12,6 +12,7 @@
           <%= text_area_tag :content, "", id: "content", class: "input-md textinput textInput form-control" %>
           <input type="hidden" id="user_id" value=<%= "#{current_user.id}" %>>
           <input type="hidden" id="upload_id" value=<%= "#{@upload.id}" %>>
+          <input type="hidden" id="token" value=<%= "#{current_user.token}" %>>
         </div>
         <div class="form-group">
           <%= submit_tag "Submit", id: "comment", class: "btn btn-primary"%>
