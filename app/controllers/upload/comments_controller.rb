@@ -5,9 +5,7 @@ class Upload::CommentsController < ApplicationController
   end
 
   def create
-    content = params[:comment][:content]
-    upload = current_user.uploads.find(params[:comment][:upload_id])
-    comment = current_user.comments.create(content: content, upload_id: upload.id)
+    byebug
 
     redirect_to upload_path(upload)
   end

@@ -9,11 +9,12 @@
       <div class="panel-body">
         <div class="form-group">
           <%= label_tag :content, "Comment", class: "control-label col-md-4 required-field" %>
-          <%= text_area_tag :content, "", class: "input-md textinput textInput form-control" %>
-          <%= hidden_field_tag :upload_id, value: @upload.id %>
+          <%= text_area_tag :content, "", id: "content", class: "input-md textinput textInput form-control" %>
+          <input type="hidden" id="user_id" value=<%= "#{current_user.id}" %>>
+          <input type="hidden" id="upload_id" value=<%= "#{@upload.id}" %>>
         </div>
         <div class="form-group">
-          <%= submit_tag "Submit", class: "btn btn-primary"%>
+          <%= submit_tag "Submit", id: "comment", class: "btn btn-primary"%>
         </div>
       </div>
     </div>
