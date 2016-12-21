@@ -37,7 +37,13 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'database_cleaner'
+
 end
+
+group :test do
+  gem 'selenium'
+end
+
 
 group :development do
   gem 'web-console'
