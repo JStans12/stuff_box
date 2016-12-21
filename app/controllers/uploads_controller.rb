@@ -41,21 +41,16 @@ class UploadsController < ApplicationController
   end
 
   def download
-    upload = Upload.new
     file = Upload.find(params[:id])
     name = file.name
     path = File.expand_path("~/Downloads")
     s3 = AWS::S3::Client.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
-    # bucket = s3.buckets['stuff-box']
-    download = File.open("#{Rails.root}/tmp/#{file.name}", 'wb') do |file|
-      s3.get_object({ bucket_name: 'stuff-box', key: name, target: "tmp/#{name}" }) do |chunk|
-      # bucket.objects[name].read do |chunk|
+    download = File.open("#{Rails.root}/tmp/#{name}", 'wb') do |file|
+      s3.get_object({ bucket_name: ':stuff-box', key: name, target: "tmp/#{name}" }) do |chunk|
         file.write(chunk)
       end
     end
-    # .write(bucket.objects[file.name].read)
-    send_file("#{path}/#{name}")
-    # send_data(download, filename: file.name, disposition: 'attachment', :stream => 'true', :buffer_size => '4096')
+    send_file("tmp/#{name}")
   end
 
   def destroy
