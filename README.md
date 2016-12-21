@@ -1,24 +1,18 @@
-# README
+## API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+When you sign up for an account with Stuff Box, you will be assigned a token. Any time you make a request to our api, you'll need to send this token along as a parameter. Checkout our list of endpoints below.
 
-Things you may want to cover:
+```/uploads/comments``` allows you to post a comment on a upload
 
-* Ruby version
+##### Parameters
 
-* System dependencies
+| Parameter Name | Description |
+| ---------------|:-----------:|
+| upload_id      | The id of the file that you want to comment on|
+| user_id        | Your user id|
+| content        | The body of your comment|
+| token          | Your unique user token|
 
-* Configuration
+##### Responses
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If your sent all the required parameters, you'll receive your parameters back as JSON.  If you messed something up you'll get "Failure": "Bad Request"
