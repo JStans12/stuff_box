@@ -256,7 +256,7 @@ DEPENDENCIES
   bcrypt
   better_errors
   byebug
-  capistrano
+  capistrano (= 3.7.1)
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
