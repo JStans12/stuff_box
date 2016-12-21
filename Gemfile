@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
   gem 'rb-readline'
   gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
   gem 'pg', '~> 0.18'
@@ -22,6 +21,8 @@ source 'https://rubygems.org'
   gem 'figaro'
   gem 'turbolinks', '~> 5.0.0'
   gem 'aws-sdk', '< 2'
+  gem 'rubyzip', '>= 1.0.0'
+  gem 'zip-zip'
 
 group :development, :test do
   gem 'byebug', platform: :mri
