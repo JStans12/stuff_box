@@ -11,11 +11,12 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
   enum status: [:pending, :confirmed]
 
-  has_many :shares
+  has_many :shares, dependent: :destroy
   has_many :shared_with_me, through: :shares, source: :folder
   has_many :folders, class_name: "Folder", foreign_key: "owner_id"
-
   has_many :uploads, through: :folders
+
+  has_many :comments
 
   def root_folder
     Folder.find(root)

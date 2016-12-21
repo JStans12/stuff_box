@@ -1,0 +1,44 @@
+<div class="mainbox col-md-8 col-md-offset-2">
+  <div class="panel panel-info">
+
+    <div class="panel-heading">
+      <div class="panel-title">
+        <center><p>Folders with free stuff for everyone!</p></center>
+      </div>
+    </div>
+
+    <!-- Files Panel List -->
+
+    <div class="panel-body new-user">
+      <div class='documents-panel'>
+
+        <table class="table table-striped">
+          <col width="10%">
+          <col width="30%">
+          <col width="10%">
+          <col width="20%">
+          <col width="30%">
+          <thead>
+            <tr>
+              <th>Owner</th>
+              <th>Name</th>
+              <th>Kind</th>
+              <th>Created At</th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <% @folders.each do |folder| %>
+                <tr>
+                  <td><%= folder.owner.username %></td>
+                  <td><%= link_to folder.name, current_folder_path(folder.id) %></td>
+                  <td><p>Folder</p></td>
+                  <td><p><%= folder.created_at %></p></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

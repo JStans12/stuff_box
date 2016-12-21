@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_folder, :current_admin
+  helper_method :current_user, :current_folder, :current_admin?
 
   add_flash_types :success, :info, :warning, :danger
 

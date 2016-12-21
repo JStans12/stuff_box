@@ -53,8 +53,9 @@
                         <p><%= upload.created_at %></p>
                     </td>
                     <td>
-                       <p><%= button_to 'Download', download_path(upload), class: "btn btn-primary btn-xs" %></p>
-                       <p><%= button_to 'Delete', uploads_destroy_path(upload), class: "btn btn-danger btn-xs" %></p>
+                      <%= link_to 'Download', download_path(upload), method: :post, class: "btn btn-primary btn-xs" %>
+                      <%= link_to 'Delete', uploads_destroy_path(upload), method: :post, class: "btn btn-danger btn-xs" %>
+                      <%= link_to 'Comment', upload_path(upload), class: "btn btn-caution btn-xs" %>
                     </td>
                   </tr>
               <% end %>
