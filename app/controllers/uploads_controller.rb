@@ -58,14 +58,18 @@ class UploadsController < ApplicationController
     files = current_user.folders.find(params[:id]).uploads
     zipfile = "tmp/#{Time.now}.zip"
     files.each do |file|
-      name = file.name
-      s3.get_object({ bucket_name: 'stuff-box', key: name, target: "tmp/#{name}" })
+      File.open("#{Rails.root}/tmp/#{file.name}", 'wb') do |files|
+        s3.get_object({ bucket_name: 'stuff-box', key: file.name, response_target: "tmp/#{file.name}" }) do |chunk|
+          files.write(chunk)
+        end
+      end
     end
     Zip::File.open(zipfile, Zip::File::CREATE) do |zip|
       files.each do |file|
-        zip.add(file.name, zipfile)
+        zip.add(file.name, "tmp/#{file.name}")
       end
     end
+    send_file(zipfile)
   end
 
   def destroy
