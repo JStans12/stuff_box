@@ -17,7 +17,7 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= link_to "#{user.username}", admin_user_path(user.id) %></td>
+        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td><%= user.cellphone %></td>
         <td><%= user.status %></td>
@@ -32,3 +32,4 @@
     </tbody>
   </table>
 </div>
+y

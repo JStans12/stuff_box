@@ -5,8 +5,6 @@ class UploadsController < ApplicationController
 
   def show
     @upload = current_user.uploads.find(params[:id])
-    @comment = Comment.new
-    @upload_comments = @upload.comments
   end
 
    def create
