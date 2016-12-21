@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.7.0"
+lock "3.7.1"
 
 set :application, "stuff_box"
 set :repo_url, "git@github.com:JStans12/stuff_box.git"
