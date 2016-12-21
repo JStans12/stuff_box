@@ -44,6 +44,8 @@ class UploadsController < ApplicationController
     upload = Upload.new
     file = Upload.find(params[:id])
     path = File.expand_path("~/Downloads")
+    s3 = AWS::S3.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
+    bucket = s3.buckets['stuff-box']
     download = File.open("#{Rails.root}/tmp/#{file.name}", 'wb').write(bucket.objects[file.name].read)
     send_data(download, filename: file.name)
   end
