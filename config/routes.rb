@@ -42,6 +42,6 @@ Rails.application.routes.draw do
   post "/uploads/destroy", to: "uploads#destroy"
 
   namespace :uploads do
-    resources :comments, only: [:new, :create, :show]
+    resources :comments, only: [:create]
   end
 end

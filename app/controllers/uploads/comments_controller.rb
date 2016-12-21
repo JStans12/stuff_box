@@ -1,20 +1,12 @@
 class Uploads::CommentsController < ApplicationController
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
     Comment.create(comment_params)
-    @comments = Comment.all
+    @comments = Upload.find(params[:upload_id]).comments
 
     respond_to do |format|
       format.js
     end
-  end
-
-  def show
-
   end
 
   private
