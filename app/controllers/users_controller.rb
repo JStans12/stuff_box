@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
 
   def update
+    @view = params[:view]
+  end
+
+  def update_username
+    
+  end
+
+  def update_email
     
   end
 

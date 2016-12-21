@@ -36,7 +36,6 @@ group :development, :test do
   gem 'webmock'
   gem 'pry'
   gem 'better_errors'
-  gem 'database_cleaner'
 end
 
 group :development do
