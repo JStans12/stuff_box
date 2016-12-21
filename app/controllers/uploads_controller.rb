@@ -48,7 +48,7 @@ class UploadsController < ApplicationController
     s3 = AWS::S3::Client.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
     # bucket = s3.buckets['stuff-box']
     download = File.open("#{Rails.root}/tmp/#{file.name}", 'wb') do |file|
-      s3.get_object({ bucket_name: 'stuff-box', key: name }) do |chunk|
+      s3.get_object({ bucket_name: 'stuff-box', key: name, target: "tmp/#{name}" }) do |chunk|
       # bucket.objects[name].read do |chunk|
         file.write(chunk)
       end
