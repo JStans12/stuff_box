@@ -11,8 +11,10 @@
             <div class='float-right'>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
                 <%= link_to "Root Folder", root_folder_path, class: 'root-folder-link' %>
+              <% if (current_folder.name != "root") && (current_folder.owner == current_user) %>
               <a href='/up'><span class="glyphicon glyphicon-level-up"></span></a>
                 <%= link_to "Parent Folder", up_path %>
+                <% end %>
             </div>
             <div class="float-left"><span class="glyphicon glyphicon-menu-down"></span>Current Folder</div>
           </div>
