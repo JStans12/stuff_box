@@ -22,6 +22,8 @@ source 'https://rubygems.org'
   gem 'figaro'
   gem 'turbolinks', '~> 5.0.0'
   gem 'aws-sdk', '< 2'
+  gem 'active_model_serializers', '~> 0.10.0'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri

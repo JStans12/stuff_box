@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  after_create :create_root_folder
+  after_create :create_root_folder, :create_token
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -25,6 +25,11 @@ class User < ApplicationRecord
   def create_root_folder
     root = folders.create(name: "root", owner_id: id)
     update(root: root.id)
+    save
+  end
+
+  def create_token
+    update(token: rand(10000) + 1)
     save
   end
 
