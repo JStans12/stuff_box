@@ -1,3 +1,16 @@
+## Setup and Use
+
+```bash
+git clone https://github.com/JStans12/stuff_box.git
+bundle
+```
+
+Setup database with ```rake db:{create,migrate,seed}```
+
+Run the test suite with ```rspec```
+
+Start a server with ```rails s```
+
 ## API
 
 When you sign up for an account with Stuff Box, you will be assigned a token. Any time you make a request to our api, you'll need to send this token along as a parameter. Checkout our list of endpoints below.
