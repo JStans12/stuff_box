@@ -36,12 +36,13 @@ Rails.application.routes.draw do
   post "/share", to: "folders#share"
   get "public_folders", to: "folders#public_folders"
 
+  namespace :uploads do
+    resources :comments, only: [:create, :index]
+    put "/comment", to: "comments#update"
+    delete "/comment", to: "comments#destroy"
+  end
 
   resources :uploads, only: [:index, :show, :create]
 
   post "/uploads/destroy", to: "uploads#destroy"
-
-  namespace :uploads do
-    resources :comments, only: [:create]
-  end
 end
