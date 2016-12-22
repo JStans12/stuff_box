@@ -40,6 +40,17 @@ class UploadsController < ApplicationController
 
   def download
     file = Upload.find(params[:id])
+<<<<<<< HEAD
+    upload.save_file(file)
+    send_file("tmp/#{file.name}")
+  end
+
+  def download_folder
+    zipfile = "tmp/#{Time.now}.zip"
+    files = current_user.folders.find(params[:id]).uploads
+    upload.download_folder(files)
+    send_file(zipfile)
+=======
     name = file.name
     path = File.expand_path("~/Downloads")
     s3 = AWS::S3::Client.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
@@ -49,6 +60,7 @@ class UploadsController < ApplicationController
       end
     end
     send_file("tmp/#{name}")
+>>>>>>> development
   end
 
   def destroy
