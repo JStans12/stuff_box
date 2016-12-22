@@ -10,6 +10,34 @@ class Uploads::CommentsController < ActionController::API
     end
   end
 
+  def index
+    user = User.find_by(username: params[:username])
+    comments = user.comments
+    render json: comments
+  end
+
+  def update
+    comment = Comment.update(params[:comment_id], content: params[:content])
+    user = User.find_by(username: params[:username])
+    if comment.user = user
+      comment.save
+      render json: comment
+    else
+      render json: { failure: "you trying to game the system bro?" }
+    end
+  end
+
+  def destroy
+    comment = Comment.update(params[:comment_id], content: params[:content])
+    user = User.find_by(username: params[:username])
+    if comment.user = user
+      comment.destroy!
+      render json: { success: "Your comment is gone forever!" }
+    else
+      render json: { failure: "you trying to game the system bro?" }
+    end
+  end
+
   private
     def comment_params
       params[:user_id] = User.find_by(username: params[:username]).id
