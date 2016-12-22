@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'uploads/index'
 
   post 'uploads/download/:id', to: "uploads#download", as: "download"
-
+  post 'uploads/download/folder/:id', to: "uploads#download_folder", as: "download_folder"
   root "dashboard#index"
 
   get "/login",                           to: "sessions#new"
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index, :show]
-    resources :users
+    resources :users, only: [:edit, :update, :destroy]
   end
 
   # folders
@@ -36,12 +36,13 @@ Rails.application.routes.draw do
   post "/share", to: "folders#share"
   get "public_folders", to: "folders#public_folders"
 
+  namespace :uploads do
+    resources :comments, only: [:create, :index]
+    put "/comment", to: "comments#update"
+    delete "/comment", to: "comments#destroy"
+  end
 
   resources :uploads, only: [:index, :show, :create]
 
   post "/uploads/destroy", to: "uploads#destroy"
-
-  namespace :upload do
-    resources :comments, only: [:new, :create, :show]
-  end
 end
