@@ -1,9 +1,10 @@
-	<%= link_to "Update Password", update_path, view: 'password' %>
-	<%= link_to "Update Username", update_path, view: 'username' %>
-	<%= link_to "Update Email", update_path, view: 'email' %>
+<%= link_to "Update Password", update_path(view: 'password') %>
+	<%= link_to "Update Username", update_path(view: 'username') %>
+	<%= link_to "Update Email", update_path(view: 'email') %>
+
 <div class="mainbox">
 	<%= render partial: "side_bar" %> 
-	<%= render partial: "update_password" %> if @view == :password
-	<%= render partial: "update_email" %> if @view == :email
-	<%= render partial: "update_username" %> if @view == :username
+	<%= render partial: "update_password"  if @view == 'password' %>
+	<%= render partial: "update_email"  if @view == 'email' %>
+	<%= render partial: "update_username"  if @view == 'username' %>
 </div>
