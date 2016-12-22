@@ -24,6 +24,7 @@ source 'https://rubygems.org'
   gem 'rubyzip', '>= 1.0.0'
   gem 'zip-zip'
   gem 'active_model_serializers', '~> 0.10.0'
+  gem 'faker'
 
 
 group :development, :test do
