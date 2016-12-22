@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
   gem 'rb-readline'
   gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
   gem 'pg', '~> 0.18'
@@ -10,7 +9,7 @@ source 'https://rubygems.org'
   gem 'coffee-rails', '~> 4.2'
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.5'
-  gem 'capistrano'
+  gem 'capistrano', '3.7.1'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
@@ -22,6 +21,10 @@ source 'https://rubygems.org'
   gem 'figaro'
   gem 'turbolinks', '~> 5.0.0'
   gem 'aws-sdk', '< 2'
+  gem 'rubyzip', '>= 1.0.0'
+  gem 'zip-zip'
+  gem 'active_model_serializers', '~> 0.10.0'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
