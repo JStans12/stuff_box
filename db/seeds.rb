@@ -44,7 +44,6 @@ def user
 
     folder = user.new_folder(Faker::Lorem.word)
     user.new_folder(Faker::Lorem.word, folder)
-    folder.public_folder! if rand(10) == 5
     user.share_folder(User.last, folder)
   end
 end
