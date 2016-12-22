@@ -39,6 +39,7 @@ class UploadsController < ApplicationController
   end
 
   def download
+    upload = Upload.new
     file = Upload.find(params[:id])
     upload.save_file(file)
     send_file("tmp/#{file.name}")
