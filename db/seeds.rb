@@ -1,3 +1,5 @@
+User.destroy_all
+
 admin = User.create!(username: "admin", password: "admin", password_confirmation: "admin", email: "admin", cellphone: "3333333333", role: "admin")
 john = User.create!(username: "John Elway", password: "je", password_confirmation: "je", email: "john@example.com", cellphone: "3033033333")
 taylor = User.create!(username: "Taylor Swift", password: "ts", password_confirmation: "ts", email: "ts@example.com", cellphone: "3034567891")
@@ -30,3 +32,20 @@ barack.share_folder(john, dnc_data)
 
 tweets = donny.new_folder("classic tweets")
 donny.share_folder(taylor, tweets)
+
+def user
+  1000.times do |i|
+    user = User.create!(username: Faker::Name.name + "#{i}",
+                        password: "p",
+                        password_confirmation: "p",
+                        email: Faker::Internet.email,
+                        cellphone: Faker::PhoneNumber.cell_phone
+                        )
+
+    folder = user.new_folder(Faker::Lorem.word)
+    user.new_folder(Faker::Lorem.word, folder)
+    folder.public_folder! if rand(10) == 5
+    user.share_folder(User.last, folder)
+  end
+end
+user
