@@ -1,6 +1,10 @@
 <div class="mainbox">
 	<%= render partial: "side_bar" %> 
-	<%= render partial: "update_password"  if @view == 'password' %>
-	<%= render partial: "update_email"  if @view == 'email' %>
-	<%= render partial: "update_username"  if @view == 'username' %>
+	<% if @view == 'password' %>
+		<%= render :partial => 'update_password', :locals => {:view => "password"} %>
+	<% elsif @view == 'email' %>
+		<%= render partial: "update_email", :locals => {:view => "email"}  %>
+	<% elsif @view == 'username' %>
+		<%= render partial: "update_username", :locals => {:view => "username"} %>
+	<% end %>
 </div>

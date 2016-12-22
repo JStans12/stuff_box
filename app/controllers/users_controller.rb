@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def update
+    params
     @view = params[:view]
   end
 
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
   end
 
   def update_email
+    params
+    
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:current_password])
       user.update_attribute(:username, params[:username])
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
+    byebug
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:current_password])
       response = AuthyService.send_verification_code(user.cellphone)
@@ -44,6 +48,7 @@ class UsersController < ApplicationController
 
   def verify_user
     message = AuthyService.check_verification_code(current_user, params[:verification_code])
+    byebug
     if message == "Verification code is correct."
       current_user.password = session[:new_password]
       current_user.save
