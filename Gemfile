@@ -23,6 +23,8 @@ source 'https://rubygems.org'
   gem 'aws-sdk', '< 2'
   gem 'rubyzip', '>= 1.0.0'
   gem 'zip-zip'
+  gem 'active_model_serializers', '~> 0.10.0'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -38,6 +40,7 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem 'database_cleaner'
+
 end
 
 group :development do

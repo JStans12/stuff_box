@@ -1,9 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   before_action :admin_user,     only: :destroy
 
-  def show
-  end
-
   def edit
     @user = User.find(params[:id])
   end
