@@ -56,7 +56,7 @@ class UploadsController < ApplicationController
   def destroy
     file = Upload.find(params[:format])
     if file.folder.owner == current_user
-      file.destroy
+      file.destroy!
       redirect_to root_path, success: 'Folder is deleted'
     else
       redirect_to root_path, danger: 'Do not have permission'
