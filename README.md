@@ -1,18 +1,82 @@
+## Setup and Use
+
+```bash
+git clone https://github.com/JStans12/stuff_box.git
+bundle
+```
+
+Setup database with ```rake db:{create,migrate,seed}```
+
+Run the test suite with ```rspec```
+
+Start a server with ```rails s```
+
 ## API
 
 When you sign up for an account with Stuff Box, you will be assigned a token. Any time you make a request to our api, you'll need to send this token along as a parameter. Checkout our list of endpoints below.
 
-```/uploads/comments``` allows you to post a comment on a upload
+POST ```/uploads/comments``` allows you to post a comment on a upload
 
 ##### Parameters
 
 | Parameter Name | Description |
 | ---------------|:-----------:|
 | upload_id      | The id of the file that you want to comment on|
-| user_id        | Your user id|
+| username       | Your username|
 | content        | The body of your comment|
 | token          | Your unique user token|
 
 ##### Responses
 
-If your sent all the required parameters, you'll receive your parameters back as JSON.  If you messed something up you'll get "Failure": "Bad Request"
+Returns your comment as JSON.
+<br>
+<br>
+<br>
+
+GET ```/uploads/comments``` returns a list of all your personal comments
+
+##### Parameters
+
+| Parameter Name | Description |
+| ---------------|:-----------:|
+| username       | Your username|
+| token          | Your unique user token|
+
+##### Responses
+
+Returns a list receive a a list of all your comments in JSON.
+<br>
+<br>
+<br>
+
+PUT ```/uploads/comment``` allows you to edit a previous comment that you made
+
+##### Parameters
+
+| Parameter Name | Description |
+| ---------------|:-----------:|
+| comment_id      | The id of the comment that you want to edit|
+| username       | Your username|
+| content        | The body of your comment|
+| token          | Your unique user token|
+
+##### Responses
+
+Returns your edited comment as JSON.
+<br>
+<br>
+<br>
+
+PUT ```/uploads/comment``` allows you to edit a previous comment that you made
+
+##### Parameters
+
+| Parameter Name | Description |
+| ---------------|:-----------:|
+| comment_id      | The id of the comment that you want to edit|
+| username       | Your username|
+| token          | Your unique user token|
+
+##### Responses
+
+Returns a success message alerting you that your comment is gone forever.
