@@ -12,13 +12,13 @@ class Uploads::CommentsController < ActionController::API
 
   private
     def comment_params
+      params[:user_id] = User.find_by(username: params[:username]).id
       params.permit(:upload_id, :user_id, :content)
     end
 
     def authenticate
-      user = User.find(params[:user_id])
-
-      unless ( current_user && current_user.id.to_s == params[:user_id] ) || ( params[:token] == user.token )
+      user = User.find_by(username: params[:username])
+      unless ( current_user && current_user.username == params[:username] ) || ( params[:token] == user.token )
         render json: { failure: "Bad request"}
       end
     end

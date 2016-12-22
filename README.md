@@ -9,7 +9,7 @@ When you sign up for an account with Stuff Box, you will be assigned a token. An
 | Parameter Name | Description |
 | ---------------|:-----------:|
 | upload_id      | The id of the file that you want to comment on|
-| user_id        | Your user id|
+| username       | Your username|
 | content        | The body of your comment|
 | token          | Your unique user token|
 
