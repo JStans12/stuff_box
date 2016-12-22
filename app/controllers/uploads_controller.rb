@@ -41,28 +41,15 @@ class UploadsController < ApplicationController
   end
 
   def download
-    upload = Upload.new
     file = Upload.find(params[:id])
     upload.save_file(file)
     send_file("tmp/#{file.name}")
   end
 
   def download_folder
-    s3 = AWS::S3::Client.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
-    files = current_user.folders.find(params[:id]).uploads
     zipfile = "tmp/#{Time.now}.zip"
-    files.each do |file|
-      File.open("#{Rails.root}/tmp/#{file.name}", 'wb') do |files|
-        s3.get_object({ bucket_name: 'stuff-box', key: file.name, response_target: "tmp/#{file.name}" }) do |chunk|
-          files.write(chunk)
-        end
-      end
-    end
-    Zip::File.open(zipfile, Zip::File::CREATE) do |zip|
-      files.each do |file|
-        zip.add(file.name, "tmp/#{file.name}")
-      end
-    end
+    files = current_user.folders.find(params[:id]).uploads
+    upload.download_folder(files)
     send_file(zipfile)
   end
 

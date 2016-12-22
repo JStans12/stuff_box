@@ -17,4 +17,24 @@ class Upload < ApplicationRecord
       end
     end
   end
+
+  def download_folder(files)
+    zipfile = "tmp/#{Time.now}.zip"
+    files = files.each do |file|
+      File.open("#{Rails.root}/tmp/#{file.name}", 'wb') do |files|
+        s3.get_object({ bucket_name: 'stuff-box', key: file.name, response_target: "tmp/#{file.name}" }) do |chunk|
+          files.write(chunk)
+        end
+      end
+    end
+    zip_folder(files, zipfile)
+  end
+
+  def zip_folder(files, zipfile)
+    Zip::File.open(zipfile, Zip::File::CREATE) do |zip|
+      files.each do |file|
+        zip.add(file.name, "tmp/#{file.name}")
+      end
+    end
+  end
 end
