@@ -5,11 +5,25 @@ class UsersController < ApplicationController
   end
 
   def update_username
-    
+     user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:current_password])
+      user.update_attribute(:username, params[:username])
+      redirect_to update_path, success: "Username updated to #{current_user.username}"
+    else
+      flash.now[:danger] = "Incorrect password confirmation"
+      render :update
+    end
   end
 
   def update_email
-    
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:current_password])
+      user.update_attribute(:username, params[:username])
+      redirect_to update_path, success: "Username updated to #{current_user.username}"
+    else
+      flash.now[:danger] = "Incorrect password confirmation"
+      render :update
+    end
   end
 
   def update_password

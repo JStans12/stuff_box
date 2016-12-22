@@ -1,7 +1,7 @@
 <% if @view == nil %>
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-2 col-md-offset-5">
 <% else %> 
-  <div class="col-md-3 col-md-offset-1"> 
+  <div class="col-md-2 col-md-offset-2"> 
 <% end %>
   <div class="panel panel-info">
 
@@ -10,17 +10,16 @@
     </div>
 
     <div class="panel-body new-user">
-      <div class="col-md-6 center col-md-offset-3">
+      <div class="col-md-6 center col-md-offset-1">
         <%= link_to "Update Password", update_path(view: 'password'), class: 'btn btn-primary' %>
       </div>
-        <div class="form-group">
-          <%= label_tag :current_password, "Current Password", class: "control-label col-md-4 required-field" %>
-          <%= password_field_tag :current_password, "", class: "input-md textinput textInput form-control" %>
-        </div>
-        <div class="form-group">
-          <%= link_to "Update Username", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      <div class="col-md-6 center col-md-offset-1">
+        <%= link_to "Update Username", update_path(view: 'username'), class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-6 center col-md-offset-1">
+        <%= link_to "Update Email", update_path(view: 'email'), class: 'btn btn-primary' %>
+      </div>
+      
     </div>
   </div>
 </div>

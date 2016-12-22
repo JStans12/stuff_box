@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   post "/verify_phone",                   to: "sessions#verify_user"
   get "/update",                          to: "users#update"
   post "/update_password",                to: "users#update_password"
-  get "/update_password_verify_phone",    to: "users#verify_phone"
+  post "/update_email",                    to: "users#update_email"
+  post "/update_username",                to: "users#update_username"
   post "/update_password_verify_phone",   to: "users#verify_user"
+  post "/update_password_verify_phone",   to: "sers#verify_user"
 
   namespace :admin do
     resources :dashboard, only: [:index, :show]
