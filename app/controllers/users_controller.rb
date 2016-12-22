@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    byebug
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:current_password])
       response = AuthyService.send_verification_code(user.cellphone)
