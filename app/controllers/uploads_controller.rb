@@ -39,34 +39,24 @@ class UploadsController < ApplicationController
   end
 
   def download
+    upload = Upload.new
     file = Upload.find(params[:id])
-<<<<<<< HEAD
     upload.save_file(file)
     send_file("tmp/#{file.name}")
   end
 
   def download_folder
+    upload = Upload.new
     zipfile = "tmp/#{Time.now}.zip"
     files = current_user.folders.find(params[:id]).uploads
     upload.download_folder(files)
     send_file(zipfile)
-=======
-    name = file.name
-    path = File.expand_path("~/Downloads")
-    s3 = AWS::S3::Client.new(:access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'])
-    download = File.open("#{Rails.root}/tmp/#{name}", 'wb') do |file|
-      s3.get_object({ bucket_name: 'stuff-box', key: name, target: "tmp/#{name}" }) do |chunk|
-        file.write(chunk)
-      end
-    end
-    send_file("tmp/#{name}")
->>>>>>> development
   end
 
   def destroy
     file = Upload.find(params[:format])
     if file.folder.owner == current_user
-      file.destroy
+      file.destroy!
       redirect_to root_path, success: 'Folder is deleted'
     else
       redirect_to root_path, danger: 'Do not have permission'
